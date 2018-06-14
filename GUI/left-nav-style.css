@@ -2,7 +2,7 @@
  * Panello latearle autouscente con navigazione
  * che esce al clic da sinistra
  */
- 
+
 .nav {
     /*  largezza libera, potrai sperimentare */
     width: 320px;
@@ -26,12 +26,12 @@
     /* indichiamo che sara sopra tutti gli altri elementi della pagina  */
     z-index: 2000;
 }
- 
+
 /**
- * Bottone interruttore del panello 
+ * Bottone interruttore del panello
  * tag <label>
  */
- 
+
 .nav-toggle {
     /* posizionamento assoluto*/
     position: absolute;
@@ -42,7 +42,7 @@
     /* spazzi interni  */
     padding: 0.5em;
     /* indichimo il colore dllo sfondo del interruttore
-     * di solito corrisponde al colore del panello 
+     * di solito corrisponde al colore del panello
     */
     background: inherit;
     /* colore del testo */
@@ -59,49 +59,49 @@
     -moz-transition: color .25s ease-in-out;
     transition: color .25s ease-in-out;
 }
- 
-/* identifichino il teso del bottone interruttore 
+
+/* identifichino il teso del bottone interruttore
  * simbolo Unicode (TRIGRAM FOR HEAVEN)
 */
- 
+
 .nav-toggle:after {
     content: '\2630';
     text-decoration: none;
 }
- 
+
 /* colore del testo al hover  */
- 
+
 .nav-toggle:hover {
     color: #f4f4f4;
 }
- 
+
 /**
  * Checkbox nascosto
  * invisibile e inaccessibile  :)
  * nome del selettore del attributo del checkbox
  */
- 
+
 [id='nav-toggle'] {
     position: absolute;
     display: none;
 }
- 
+
 /**
- * cambiamento della posizione del iterutore  
+ * cambiamento della posizione del iterutore
  * in caso di dispositivi mobili
  * quando panello aperto si trova al interno del panello */
- 
+
 [id='nav-toggle']:checked ~ .nav > .nav-toggle {
     left: auto;
     right: 2px;
     top: 1em;
 }
- 
+
 /**
- * Quando checkbox selezionato, aprire panello 
+ * Quando checkbox selezionato, aprire panello
  * usiamo pseudo-classe :checked
  */
- 
+
 [id='nav-toggle']:checked ~ .nav {
     left: 0;
     box-shadow:4px 0px 20px 0px rgba(0,0,0, 0.5);
@@ -109,48 +109,48 @@
     -webkit-box-shadow:4px 0px 20px 0px rgba(0,0,0, 0.5);
     overflow-y: auto;
 }
- 
-/* 
- * spostamento del contenuto della pagina 
+
+/*
+ * spostamento del contenuto della pagina
  * per largezza del panelo ,
  * non e obbligatorio il trucco, ma puoi sempre usarlo
 */
- 
+
 [id='nav-toggle']:checked ~ main > article {
     -webkit-transform: translateX(320px);
     -moz-transform: translateX(320px);
     transform: translateX(320px);
 }
- 
+
 /*
  * cambio simbolo del bottone interruttore ,
- * solita croce  (MULTIPLICATION X), 
+ * solita croce  (MULTIPLICATION X),
  * potrai utilizare qualsiasi altro simbolo
 */
- 
+
 [id='nav-toggle']:checked ~ .nav > .nav-toggle:after {
     content: '\2715';
 }
- 
+
 /**
  * prefissi per Android <= 4.1.2
- * 
+ *
  */
- 
+
 body {
     -webkit-animation: bugfix infinite 1s;
 }
- 
+
 @-webkit-keyframes bugfix {
     to {
       padding: 0;
     }
 }
- 
+
 /**
  * per dispositivi medie e piccoli
  */
- 
+
 @media screen and (min-width: 320px) {
     html,
     body {
@@ -158,7 +158,7 @@ body {
       overflow-x: hidden;
     }
 }
- 
+
 @media screen and (max-width: 320px) {
     html,
     body {
@@ -170,11 +170,11 @@ body {
       box-shadow: none
     }
 }
- 
+
 /**
- * Definiamo lo stile del titolo(logo) del panello  
+ * Definiamo lo stile del titolo(logo) del panello
 */
- 
+
 .nav h2 {
     width: 90%;
     padding: 0;
@@ -197,16 +197,16 @@ body {
     -moz-transition: opacity 0.8s, -moz-transform 0.8s;
     -webkit-transition: opacity 0.8s, -webkit-transform 0.8s;
 }
- 
+
 .nav h2 a {
     color: #dadada;
     text-decoration: none;
     text-transform: uppercase;
 }
- 
- 
+
+
 /*Uscita morbida del titolo(logo) al apertura del panello  */
- 
+
 [id='nav-toggle']:checked ~ .nav h2 {
     opacity: 1;
     transform: scale(1, 1);
@@ -214,20 +214,20 @@ body {
     -moz-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
 }
- 
+
 /**
- * Decoriamo il menu 
+ * Decoriamo il menu
  * usando la lista non numerata per le voci
- * aggiungiamo passaggi morbidi e trasformazioni 
+ * aggiungiamo passaggi morbidi e trasformazioni
  */
- 
+
 .nav > ul {
     display: block;
     margin: 0;
     padding: 0;
     list-style: none;
 }
- 
+
 .nav > ul > li {
     line-height: 2.5;
     opacity: 0;
@@ -240,7 +240,7 @@ body {
     -ms-transition: opacity .5s .1s, -ms-transform .5s .1s;
     transition: opacity .5s .1s, transform .5s .1s;
 }
- 
+
 [id='nav-toggle']:checked ~ .nav > ul > li {
     opacity: 1;
     -webkit-transform: translateX(0);
@@ -248,44 +248,48 @@ body {
     -ms-transform: translateX(0);
     transform: translateX(0);
 }
- 
+
 /* impostiamo intervalli di apparizone dei voci del menu  */
- 
+
 .nav > ul > li:nth-child(2) {
     -webkit-transition: opacity .5s .2s, -webkit-transform .5s .2s;
     transition: opacity .5s .2s, transform .5s .2s;
 }
- 
+
 .nav > ul > li:nth-child(3) {
     -webkit-transition: opacity .5s .3s, -webkit-transform .5s .3s;
     transition: opacity .5s .3s, transform .5s .3s;
 }
- 
+
 .nav > ul > li:nth-child(4) {
     -webkit-transition: opacity .5s .4s, -webkit-transform .5s .4s;
     transition: opacity .5s .4s, transform .5s .4s;
 }
- 
+
 .nav > ul > li:nth-child(5) {
     -webkit-transition: opacity .5s .5s, -webkit-transform .5s .5s;
     transition: opacity .5s .5s, transform .5s .5s;
 }
- 
+
 .nav > ul > li:nth-child(6) {
     -webkit-transition: opacity .5s .6s, -webkit-transform .5s .6s;
     transition: opacity .5s .6s, transform .5s .6s;
 }
- 
+
 .nav > ul > li:nth-child(7) {
     -webkit-transition: opacity .5s .7s, -webkit-transform .5s .7s;
     transition: opacity .5s .7s, transform .5s .7s;
 }
- 
- 
+.nav > ul > li:nth-child(8) {
+  -webkit-transition: opacity .5s .7s, -webkit-transform .5s .7s;
+  transition: opacity .5s .7s, transform .5s .7s;
+}
+
+
 /**
- * decoriamo link delle voci del menu 
+ * decoriamo link delle voci del menu
  */
- 
+
 .nav > ul > li > a {
     display: inline-block;
     position: relative;
@@ -301,21 +305,21 @@ body {
     -moz-transition: color .5s ease, padding .5s ease;
     transition: color .5s ease, padding .5s ease;
 }
- 
+
 /**
  * stato dei link al passaggio del mouse
  */
- 
+
 .nav > ul > li > a:hover,
 .nav > ul > li > a:focus {
     color: white;
     padding-left: 15px;
 }
- 
+
 /**
  * sottolineatura dei link del menu
  */
- 
+
 .nav > ul > li > a:before {
     content: '';
     display: block;
@@ -327,7 +331,7 @@ body {
     -webkit-transition: width 0s ease;
     transition: width 0s ease;
 }
- 
+
 .nav > ul > li > a:after {
     content: '';
     display: block;
@@ -340,28 +344,28 @@ body {
     -webkit-transition: width .5s ease;
     transition: width .5s ease;
 }
- 
+
 /**
- * animazione delle linea di sottolineatura al hover 
+ * animazione delle linea di sottolineatura al hover
  */
- 
+
 .nav > ul > li > a:hover:before {
     width: 0%;
     background: #3bc1a0;
     -webkit-transition: width .5s ease;
     transition: width .5s ease;
 }
- 
+
 .nav > ul > li > a:hover:after {
     width: 0%;
     background: transparent;
     -webkit-transition: width 0s ease;
     transition: width 0s ease;
 }
- 
-/* lo sfondo oscurante della pagina  
+
+/* lo sfondo oscurante della pagina
  * in questo caso ellementi vengono blocati */
- 
+
 /*
 .mask-content {
     display: block;
@@ -375,7 +379,7 @@ body {
     visibility: hidden;
     opacity: 0;
 }
- 
+
 [id='nav-toggle']:checked ~ .mask-content {
     visibility: visible;
     opacity: 1;
