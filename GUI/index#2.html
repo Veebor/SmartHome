@@ -29,8 +29,8 @@
   <h2 class="logo">
     <a href="http://moxnet.tk">ClFbV.cf</a>
   </h2>
-  <ul>
 
+    <ul>
       <li><a href="root1.html">Favorite</a>
       <li><a href="index%231.html">Kitchen</a>
       <li><a href="index%232.html">Bedrooms</a>
@@ -40,8 +40,8 @@
       <li><a href="index%236.html">Facilities</a>
       <li><a href="index%238.html">Sensori</a>
       <li><a href="index%237.html">Security</a>
+    </ul>
 
-  </ul>
 </nav>
 
 
@@ -50,16 +50,150 @@
 
 
 <p STYLE="text-align: center" >
-  <font size="20">Condizionatore
-  </font>
+    <font size="20">Tapparelle
+    </font>
+</p>
+<p STYLE="text-align: center">
+
+
+    <input type="button"  class="btn">
+
+
+
+    <style>
+      .btn{
+
+        width: 200px;
+        height: 200px;
+        background-color: #1abc9c;
+        background-repeat: no-repeat;
+        background-image: url("control_arrow_upward.png");
+        background-position: center center;
+        background-size: cover;
+        bottom: 150px;
+      }
+
+
+
+
+
+    </style>
+  </p>
+
+
+<p STYLE="text-align: center">
+
+
+
+
+
+  <input type="button" class="btm" >
+
+
+
+  <style>
+    .btm{
+
+      width: 200px;
+      height: 200px;
+      background: #1abc9c no-repeat center center;
+      background-image: url("control_arrow_downward.png");
+      background-size: cover;
+      bottom: 150px;
+    }
+
+
+  </style>
+</p>
+<p style="text-align: left">
+  <input class="btr"type="button" onclick="alert('Apertura tapparelle impostata')">
+  <input class="btz"  type="time" name="usr_time">
+<p style="text-align: right">
+
+
+
+<style>
+
+  .click{
+    right: 600px;
+  }
+  .btz{
+
+      width: 200px;
+      height: 90px;
+      background-color: #ffffff;
+      background-repeat: no-repeat;
+      bottom: 150px;
+      right: 100px;
+    }
+
+
+
+  </style>
+
+
+
+<p style="text-align: left">
+  <input class="btp" type="button" onclick=" alert('Chiusura tapparelle impostata')">
+  <input class="btz"  type="time" name="usr_time">
+</p>
+
+
+
+
+    <style>
+    .btz{
+
+      width: 200px;
+      height: 90px;
+      background-color: #ffffff;
+      background-repeat: no-repeat;
+
+      background-position: center center;
+      background-size: cover;
+      bottom: 150px;
+      right: 100px;
+    }
+
+    .btr {
+      width: 200px;
+      height: 200px;
+      background-color: #1abc9c;
+      background-repeat: no-repeat;
+      background-image: url("fts_shutter.png");
+      background-position: center center;
+      background-size: cover;
+      bottom: 150px;
+      right: 100px;
+    }
+
+
+
+
+
+    .btp { width: 200px;
+      height: 200px;
+      background-color: #1abc9c;
+      background-repeat: no-repeat;
+      background-image: url("fts_shutter_80.png");
+      background-position: center center;
+      background-size: cover;
+      bottom: 150px;
+      right: 100px;
+      }
+
+
+  </style>
+<hr></hr>
+<p STYLE="text-align: center" >
+  <font size="20">Condizionatore</font>
 </p>
 <p STYLE="text-align: center">
 
 
 
-  <input class= btcheck type="checkbox" id="myCheck" style="position: absolute" onclick="unction()">
-<input class="bti"  style="position: absolute" >
-
+  <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+  <label class="btcheck" for="myonoffswitch" onclick="unction()"></label>
 
   <style>
     .btcheck{
@@ -77,12 +211,13 @@
 
   <script>
     function unction() {
-      var checBox = document.getElementById("myCheck");
+      var checBox = document.getElementById("myonoffswitch");
       var text = document.getElementById("text");
       if (checBox.checked == true){
         alert("Condizionatore Acceso");
       } else {
         alert("Condizionatore Spento");
+        cheBox.checked == true;
       }
     }
   </script>
@@ -105,20 +240,7 @@
 
 
   </style>
-  <script>
-    var state ;
-    function onoff() {if (state = true ){
 
-    alert("Accensione Condizionatore");
-      return state = false
-
-    }
-    else {
-
-    alert("Spegnimento  condizionatore");
-       return state = true}
-    }
-  </script>
 </p>
 
 
@@ -145,9 +267,6 @@
 
 
   </style>
-
-
-
 
 
 
