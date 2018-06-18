@@ -284,6 +284,10 @@ body {
   -webkit-transition: opacity .5s .7s, -webkit-transform .5s .7s;
   transition: opacity .5s .7s, transform .5s .7s;
 }
+.nav > ul > li:nth-child(9) {
+  -webkit-transition: opacity .5s .7s, -webkit-transform .5s .7s;
+  transition: opacity .5s .7s, transform .5s .7s;
+}
 
 
 /**
