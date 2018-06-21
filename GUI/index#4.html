@@ -42,14 +42,48 @@
   </ul>
 </nav>
 <p STYLE="text-align: center" >
-  <font size="20">Porte
+  <font size="20">Living Room
   </font>
 </p>
-<p STYLE="text-align: center">
+<p style="text-align: center">
+<label class="btcheck" style="background-image: url('light_office_desk.png')" for="myonoffswitch" onclick="unction()"></label>
+
+<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+</p><p style="text-align: center">
+<label class="btcheck" style="background-image: url('light_floor_lamp.png')" for="myonoffswitch" onclick="unction()"></label>
+
+<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+</p><p style="text-align: center">
+<label class="btcheck" style="background-image: url('light_downlight.png')" for="myonoffswitch" onclick="unction()"></label>
+
+<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+</p>
+
+<style>
+  .btcheck{
+
+    width: 100px;
+    height: 100px;
+    background: #1abc9c no-repeat center center;
+    background-size: cover;
+    bottom: 150px;
+  }
 
 
+</style>
 
-
+<script>
+  function unction() {
+    var checBox = document.getElementById("myonoffswitch");
+    var text = document.getElementById("text");
+    if (checBox.checked == true){
+      alert("Luce Accesa");
+    } else {
+      alert("Luce Spenta");
+      cheBox.checked == true;
+    }
+  }
+</script>
 
 
 
