@@ -46,16 +46,15 @@
   </font>
 </p>
 <p style="text-align: center">
-<label class="btcheck" style="background-image: url('light_office_desk.png')" for="myonoffswitch" onclick="unction()"></label>
-
-<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+<label class="btcheck" style="background-image: url('light_office_desk.png')" for="myonoffswitchi" onclick="uction()"></label>
+<input type="checkbox" name="onoffswitchi" class="onoffswitch-checkbox" id="myonoffswitchi" checked>
 </p><p style="text-align: center">
-<label class="btcheck" style="background-image: url('light_floor_lamp.png')" for="myonoffswitch" onclick="unction()"></label>
 
-<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+<label class="btcheck" style="background-image: url('light_floor_lamp.png')" for="myonoffswitchm" onclick="unction()"></label>
+<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitchm" checked>
 </p><p style="text-align: center">
-<label class="btcheck" style="background-image: url('light_downlight.png')" for="myonoffswitch" onclick="unction()"></label>
 
+<label class="btcheck" style="background-image: url('light_downlight.png')" for="myonoffswitch" onclick="uncion()"></label>
 <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
 </p>
 
@@ -73,8 +72,28 @@
 </style>
 
 <script>
-  function unction() {
+  function uction() {
+    var checBox = document.getElementById("myonoffswitchi");
+    var text = document.getElementById("text");
+    if (checBox.checked == true){
+      alert("Luce Accesa");
+    } else {
+      alert("Luce Spenta");
+      cheBox.checked == true;
+    }
+  }
+  function uncion() {
     var checBox = document.getElementById("myonoffswitch");
+    var text = document.getElementById("text");
+    if (checBox.checked == true){
+      alert("Luce Accesa");
+    } else {
+      alert("Luce Spenta");
+      cheBox.checked == true;
+    }
+  }
+  function unction() {
+    var checBox = document.getElementById("myonoffswitchm");
     var text = document.getElementById("text");
     if (checBox.checked == true){
       alert("Luce Accesa");
