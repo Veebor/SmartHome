@@ -42,11 +42,6 @@
     </ul>
 
 </nav>
-
-
-
-
-
 <p STYLE="text-align: center" >
   <font size="20">Bedrooms
   </font>
@@ -183,8 +178,10 @@
       right: 100px;
       }
 
-
-  </style>
+    #demo {
+      width: 200px;
+    }
+    </style>
 <hr></hr>
 <p STYLE="text-align: left" >
   <font size="6">Air-Conditioner</font>
@@ -290,13 +287,15 @@
 </p>
 <p style="align-content: center">Set your Temperature</p>
 
-
-
 <div class="slidecontainer" >
-  <input type="range" min="18" max="28" value="22" class="slider" id="myRange">
+  <label>
+    <input type="range" min="18" max="28" value="22" class="slideri" id="myRange">
+  </label>
 
   <button class="btj" style="background-color:  #1abc9c" onclick="alert('Temperatura Impostata')"><span id="demo" style="width: 200px"></span></button>
 </div>
+
+
 
 
 <script>
