@@ -240,11 +240,7 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
             opacity: 0.8;
           }
 
-          .cancelbtn {
-          width: auto;
-            padding: 10px 18px;
-            background-color: #f44336;
-          }
+
 
           .imgcontainer {
             text-align: center;
@@ -271,9 +267,7 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
               display: block;
               float: none;
             }
-            .cancelbtn {
-              width: 100%;
-            }
+
           }
         </style>
 
@@ -281,63 +275,46 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
 
 
 
-      <form action="">
+
         <div class="imgcontainer">
           <img src="img_avatar.png" alt="Avatar" class="avatar">
         </div>
+       <input type="text" id="Username" value="Usr1">
+       <input type="password" id="myPsw" value="psw123">
 
-        <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
 
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+      <link rel="script" href="psswd.js">
+      <button onclick="myFunction()">Log IN</button>
 
-          <button type="submit" onclick="href">Login</button>
-          <label>
-          </label>
-        </div>
+      <p id="demo"></p>
 
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" class="cancelbtn">Cancel</button>
+      <script>
+        function myFunction() {
+          var x = document.getElementById("myPsw").value;
 
-        </div>
-      </form>
+          var y = document.getElementById("Username").value;
+          var z = x + y ;
+          document.getElementById("demo").innerHTML = z;
+        }
+
+      </script>
+
+
+
+
+
+
+
+
+
       <p style="text-align: center">
-        <a  id='wdgt_5b218999056982f0278b4567' href='https://www.3bmeteo.com/meteo/chieri/'>MeteoChieri</a>
+        <a  id='wdgt_5b218999056982f0278b4567' href='https://www.3bmeteo.com/meteo/chieri/'></a>
 
-        <script type="text/javascript">
-          var wid='5b218999056982f0278b4567';
-          (function() {
-            var wdgt = document.createElement('script'); wdgt.type = 'text/javascript'; wdgt.async = true;
-            wdgt.src = '//widget.3bmeteo.com/widget.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wdgt, s);
-          })();
-        </script>
+
       </p>
 
 
-                  <p id="demo"></p>
 
-                  <script>
-
-                    function myFunction() {
-
-                      if (pws == null || pws == "") {
-                        txt = "User cancelled the prompt.";
-                      } else if (pws == "1234") {
-                        txt = location.href = "root.html"
-                      } else if (pws == "5678")
-
-                      document.getElementById("demo").innerHTML ;
-                    }
-                  </script>
-            <script>
-              function dpg() {
-                location.href="https://github.com/ClFbV"
-              }
-            </script>
-    </p>
 
 
       </section>
