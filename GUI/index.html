@@ -1,7 +1,7 @@
 
 <!doctype html>
 
-<html lang="it">
+<html lang="it" xmlns="http://www.w3.org/1999/html">
 <!--<![endif]-->
 
 <head>
@@ -12,19 +12,22 @@
   <meta name="author" content="ClFbV" />
   <meta name="description" content="SmartHOME" />
   <meta name="keywords" content="" />
-
+  <script type="text/javascript" src="psswd.js"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="left-nav-style.css">
-  <p style="text-align: right">
-    <img src="img.png"  width="110" height="90" class="btn" onclick="dpg()" ></img>
 
-  </p>
 </head>
 
+  <body>
+  <p style="text-align: right">
+   <a href="https://time.is/Chieri" id="time_is_link" rel="nofollow" style="font-size:26px"></a>
+  <span id="Chieri_z723" style="font-size:26px"></span>
+  <script src="//widget.time.is/it.js"></script>
+  <script>
+    time_is_widget.init({Chieri_z723:{template:"TIME<br>DATE<br>SUN", time_format:"12hours:minutesAMPM", date_format:"year-monthnum-daynum", sun_format:"Durata del giorno: dlhoursh dlminutesm", coords:"45.0105400,7.8213300"}});
+  </script>
 
-<body>
-
-
+  </p>
 <!--
  checkbox nascosto, che regola l-apertura o chiusura del panello, deve trovarsi nella parte superiore del documento, meglio subito dopo il tag `<body>`
 
@@ -52,11 +55,9 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
   <div class="block block-strong no-padding">
     <div id="demo-calendar-inline-container"></div>
   </div>
-  <!DOCTYPE html>
-  <html>
-  <head>
 
-    <style>
+
+  <style>
       * {box-sizing: border-box;}
       .month ul {
         margin: 0;
@@ -139,9 +140,6 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
         .weekdays li, .days li {width: 12.2%;}
       }
     </style>
-  </head>
-  <body>
-
 
 
   <div class="month">
@@ -200,8 +198,8 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
     <li>31</li>
   </ul>
 
-  </body>
-  </html>
+
+
 
 
 </nav>
@@ -280,25 +278,18 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
         <div class="imgcontainer">
           <img src="img_avatar.png" alt="Avatar" class="avatar">
         </div>
-       <input type="text" id="Username" value="Usr1">
-       <input type="password" id="myPsw" value="psw123">
+      <label>
+        <input type="text" id="Username" value="Username">
+        <input type="password" id="myPsw" value="LLLLLLLLLLLLLL">
+
+      </label>
 
 
-      <link rel="script" href="psswd.js">
-      <button onclick="myFunction()">Log IN</button>
+
+      <button onclick="myFuction()">Log-In</button>
 
       <p id="demo"></p>
 
-      <script>
-        function myFunction() {
-          var x = document.getElementById("myPsw").value;
-
-          var y = document.getElementById("Username").value;
-          var z = x + y ;
-          document.getElementById("demo").innerHTML = z;
-        }
-
-      </script>
 
 
 
@@ -308,11 +299,7 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
 
 
 
-      <p style="text-align: center">
-        <a  id='wdgt_5b218999056982f0278b4567' href='https://www.3bmeteo.com/meteo/chieri/'></a>
 
-
-      </p>
 
 
 
