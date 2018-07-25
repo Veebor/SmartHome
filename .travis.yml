@@ -1,0 +1,8 @@
+language: python
+python:
+  - "3.6"
+os: 
+  - linux
+install: "pip install tornado"
+script:
+  - python ./GUI/test.py 
