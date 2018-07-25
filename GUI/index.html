@@ -1,8 +1,6 @@
-
 <!doctype html>
-
+<html lang="it">
 <html lang="it" xmlns="http://www.w3.org/1999/html">
-<!--<![endif]-->
 
 <head>
   <meta charset="utf-8">
@@ -12,12 +10,24 @@
   <meta name="author" content="ClFbV" />
   <meta name="description" content="SmartHOME" />
   <meta name="keywords" content="" />
-  <script type="text/javascript" src="psswd.js"></script>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="left-nav-style.css">
 
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/left-nav-style.css">
+  <p style="text-align: right">
+    <img src="/static/img.png"  width="110" height="90" class="btn" onclick="dpg()" ></img>
+
+  </p>
 </head>
 
+<body>
+
+
+<!--
+ checkbox nascosto, che regola l-apertura o chiusura del panello, deve trovarsi nella parte superiore del documento, meglio subito dopo il tag `<body>`
+
+`id` attributo serve per collegare il bottone al attributo  `for` del tag<label>
+
+=======
   <body>
   <p style="text-align: right">
    <a href="https://time.is/Chieri" id="time_is_link" rel="nofollow" style="font-size:26px"></a>
@@ -28,11 +38,11 @@
   </script>
 
   </p>
-<!--
  checkbox nascosto, che regola l-apertura o chiusura del panello, deve trovarsi nella parte superiore del documento, meglio subito dopo il tag `<body>`
 
 `id` attributo serve per collegare il bottone al attributo  `for` del tag<label>
 
+>>>>>>> parent of 2cf743c... log in
 attributo `hidden` indica che inizialmente elemento è nascosto
 -->
 <input type="checkbox" id="nav-toggle" hidden>
@@ -55,9 +65,11 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
   <div class="block block-strong no-padding">
     <div id="demo-calendar-inline-container"></div>
   </div>
+  <!DOCTYPE html>
+  <html>
+  <head>
 
-
-  <style>
+    <style>
       * {box-sizing: border-box;}
       .month ul {
         margin: 0;
@@ -140,6 +152,9 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
         .weekdays li, .days li {width: 12.2%;}
       }
     </style>
+  </head>
+  <body>
+
 
 
   <div class="month">
@@ -147,7 +162,7 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
       <li class="prev">&#10094;</li>
       <li class="next">&#10095;</li>
       <li>
-        June<br>
+        July<br>
         <span style="font-size:18px">2018</span>
       </li>
     </ul>
@@ -198,9 +213,8 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
     <li>31</li>
   </ul>
 
-
-
-
+  </body>
+  </html>
 
 </nav>
 
@@ -212,96 +226,53 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
     </header>
     <section>
       <p style="text-align: center;">
-        <style>
-          body {font-family: Arial, Helvetica, sans-serif;}
-          form {border: 3px solid #f1f1f1;}
+        <a onclick="myFunction()" class="btn btn-primary">Luca</a>
+        <a onclick="myFunction()" class="btn btn-primary">Alberto</a>
+      <hr>
+      <p style="text-align: center;">
+        <a onclick="myFunction()" class="btn btn-primary">Mamma</a>
+        <a onclick="myFunction()" class="btn btn-primary">Pap&#224;</a>
+      <p style="text-align: center">
+        <a id='wdgt_5b218999056982f0278b4567' href='https://www.3bmeteo.com/meteo/chieri/'>MeteoChieri</a>
 
-          input[type=text], input[type=password] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-          }
-
-          button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-          }
-
-          button:hover {
-            opacity: 0.8;
-          }
+        <script type="text/javascript">
+          var wid='5b218999056982f0278b4567';
+          (function() {
+            var wdgt = document.createElement('script'); wdgt.type = 'text/javascript'; wdgt.async = true;
+            wdgt.src = '//widget.3bmeteo.com/widget.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wdgt, s);
+          })();
+        </script>
+      </p>
 
 
+                  <p id="demo"></p>
 
-          .imgcontainer {
-            text-align: center;
-            margin: 24px 0 12px 0;
-          }
-
-          img.avatar {
-            width: 40%;
-            border-radius: 50%;
-          }
-
-          .container {
-            padding: 16px;
-          }
-
-          span.psw {
-            float: right;
-            padding-top: 16px;
-          }
-
-          /* Change styles for span and cancel button on extra small screens */
-          @media screen and (max-width: 300px) {
-            span.psw {
-              display: block;
-              float: none;
-            }
-
-          }
-        </style>
-
-
-
-
-
-
-        <div class="imgcontainer">
-          <img src="img_avatar.png" alt="Avatar" class="avatar">
-        </div>
-      <label>
-        <input type="text" id="Username" value="Username">
-        <input type="password" id="myPsw" value="LLLLLLLLLLLLLL">
-
-      </label>
-
-
-
-      <button onclick="myFuction()">Log-In</button>
-
-      <p id="demo"></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
+                  <script>
+                    var d = new Date();
+                    var n = d.getDate();
+                    function myFunction() {
+                      var txt;
+                      var person = prompt("Please enter your password");
+                      if (person == null || person == "") {
+                        txt = "User cancelled the prompt.";
+                      } else if (person == "1234") {
+                        txt = location.href = "/static/root.html"
+                      } else if (person == "5678") {
+                        txt = location.href = "/static/root1.html"
+                      } else if (person == "5678") {
+                        txt = location.href = "/static/root1.html"
+                      } else if (person == "5678") {
+                        txt = location.href = "/static/root1.html"
+                      }
+                      document.getElementById("demo").innerHTML ;
+                    }
+                  </script>
+            <script>
+              function dpg() {
+                location.href="https://github.com/ClFbV"
+              }
+            </script>
 
 
 
