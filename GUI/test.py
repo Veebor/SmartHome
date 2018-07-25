@@ -11,6 +11,7 @@ class MainHandler(tornado.web.RequestHandler):
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
+            (r'/(favicon.ico)', tornado.web.StaticFileHandler, {"path": ""}),
             (r'/', MainHandler),
         ]
         settings = {
