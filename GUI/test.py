@@ -1,4 +1,4 @@
-import signal
+#import signal
 import tornado.ioloop
 import tornado.web
 import os
@@ -8,7 +8,7 @@ TIMEOUT = 5
 def interrupted(signum, frame):
     print("TRAVIS")
     exit(0)
-signal.signal(signal.SIGALRM, interrupted)
+#signal.signal(signal.SIGALRM, interrupted)
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -29,9 +29,9 @@ class Application(tornado.web.Application):
 
 print("OK")
 print("Build succeded!")
-signal.alarm(TIMEOUT)
+#signal.alarm(TIMEOUT)
 travis = int(input("Write 1: "))
-signal.alarm(0)
+#signal.alarm(0)
 
 http_server = tornado.httpserver.HTTPServer(Application())
 http_server.listen(8080)
