@@ -1,9 +1,11 @@
 import signal
 import tornado.ioloop
 import tornado.web
+import tornado.escape
 import os
 import base64
 import time
+import json
 
 TIMEOUT = 5
 
@@ -26,34 +28,41 @@ class MainHandler(tornado.web.RequestHandler):
 
 class RootHandler(tornado.web.RequestHandler):
     def get(self):
-        if not self.get_secure_cookie("The_password_cookie"):
+        if not self.get_secure_cookie("Cookie_monster"):
             print("Someone is trying to gain access without password!")
             self.render("index.html", title="Smarthome")
         else:
-            self.render("static/root.html", title="User 1")
+            self.render("static/root.html", title="Luca")
 
 
 class Root1Handler(tornado.web.RequestHandler):
     def get(self):
-        if not self.get_secure_cookie("The_password_cookie1"):
+        if not self.get_secure_cookie("Cookie_monster"):
             print("Someone is trying to gain access without password!")
             self.render("index.html", title="Smarthome")
         else:
-            self.render("static/root1.html", title="User 2")
+            self.render("static/root1.html", title="Federico")
 
 
 class LoginHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.render("Login page", title="Login") # TODO create login page
-        user = "xxxx" # TODO get user from login page
-        password = "xxxx" # TODO get password from login page
-        if user == "User 1" and password == "Psw user 1":
-            self.set_secure_cookie("The_password_cookie", expires_days=7)
-        elif user == "User 2" and password == "Psw user 2":
-            self.set_secure_cookie("The_password_cookie1", expires_days=7)
+    def post(self):
+        data = json.loads(self.request.body)
+        user = data['myUser']
+        password = data['myPass']
+        print(user)
+        print(password)
+        if user == "Luca" and password == "ciccio":
+            print(user + " gained access")
+            self.set_secure_cookie("Cookie_monster", "Luca", expires_days=7)
+            self.redirect("/root", status=303)
+        elif user == "Fede" and password == "pippo":
+            print(user + " gained access")
+            self.set_secure_cookie("Cookie_monster", "Federico", expires_days=7)
+            self.redirect("/root1", status=303)
         else:
             print("Wrong password")
             self.write('403 Forbidden')
+
 
 
 class Application(tornado.web.Application):
@@ -61,8 +70,9 @@ class Application(tornado.web.Application):
         handlers = [
             (r'/(favicon.ico)', tornado.web.StaticFileHandler, {"path": ""}),
             (r'/', MainHandler),
-            (r'/root.html', RootHandler),
-            (r'/root1.html', Root1Handler),
+            (r'/index.html', MainHandler),
+            (r'/root', RootHandler),
+            (r'/root1', Root1Handler),
             (r'/login', LoginHandler)
         ]
         settings = {
@@ -80,8 +90,15 @@ travis = int(input("Write 1: "))
 signal.alarm(0)
 
 try:
-    http_server = tornado.httpserver.HTTPServer(Application())
+    http_server = tornado.httpserver.HTTPServer(Application(),
+                                                # ssl_options={
+        # "certfile": "/var/pyTest/keys/ca.csr",
+        # "keyfile": "/var/pyTest/keys/ca.key",
+    # })
+    )
     http_server.listen(8080)
+    # http_server.listen(80) TODO http standard
+    # http_server.listen(443) TODO ssl
     tornado.ioloop.IOLoop.instance().start()
 except KeyboardInterrupt:
     print("\nClosing...")

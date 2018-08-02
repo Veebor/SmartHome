@@ -11,9 +11,8 @@
   <meta name="author" content="ClFbV" />
   <meta name="description" content="SmartHOME" />
   <meta name="keywords" content="" />
-  <script type="text/javascript" src="psswd.js"></script>
   <link rel="stylesheet" href="static/style.css">
-  <link rel="stylesheet" href="/static/left-nav-style.css">
+  <link rel="stylesheet" href="static/left-nav-style.css">
 
 </head>
 
@@ -23,7 +22,7 @@
   <span id="Chieri_z723" style="font-size:26px"></span>
   <script src="//widget.time.is/it.js"></script>
   <script>
-    time_is_widget.init({Chieri_z723:{template:"TIME<br>DATE<br>SUN", time_format:"12hours:minutesAMPM", date_format:"year-monthnum-daynum", sun_format:"Durata del giorno: dlhoursh dlminutesm", coords:"45.0105400,7.8213300"}});
+    time_is_widget.init({Chieri_z723:{template:"TIME", time_format:"12hours:minutesAMPM",  coords:"45.0105400,7.8213300"}});
   </script>
 
   </p>
@@ -277,17 +276,39 @@ Qui posiamo mettere qualsiasi contenuto nel nostro caso un menu realizzato in ba
         <div class="imgcontainer">
           <img src="/static/img_avatar.png" alt="Avatar" class="button">
         </div>
-      <label>
-        <input type="text" id="Username" value="Username">
-        <input type="password" id="myPsw" value="LLLLLLLLLLLLLL">
 
       </label>
+      <div class="container">
+
+        <input type="text" placeholder="Enter Username" id="uname">
+
+        <input type="password" placeholder="Enter Password" id="psw">
+
+        <button type="submit" onclick="myTornado()">Login</button>
+        <label>
+        </label>
+      </div>
 
 
 
-      <button onclick="myFuction()">Log-In</button>
+
+
+
 
       <p id="demo"></p>
+
+      <script>
+          function myTornado() {
+              var uname = document.getElementById('uname').value
+              var psw = document.getElementById('psw').value
+              var url = "/login";
+              var params = {"myUser" : uname, "myPass" : psw}
+              var tosend = JSON.stringify(params)
+              var xhr = new XMLHttpRequest();
+              xhr.open("POST", url);
+              xhr.send(tosend);
+          }
+      </script>
 
 
 
