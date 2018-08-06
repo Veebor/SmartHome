@@ -52,18 +52,18 @@ class Root1Handler(tornado.web.RequestHandler):
 class LoginHandler(tornado.web.RequestHandler):
     def post(self):
         data = json.loads(self.request.body)
-        user = data['myUser']
-        password = data['myPass']
+        user = base64.b64decode(data['myUser']).decode('utf-8')
+        password = base64.b64decode(data['myPass']).decode('utf-8')
         print(user)
         print(password)
         if user == "Luca" and password == "ciccio":
             print(user + " gained access")
             self.set_secure_cookie("LUCA", 'OK', expires_days=7)
-            self.redirect("/root", status=303)
+            self.redirect("/root", status=302)
         elif user == "Fede" and password == "pippo":
             print(user + " gained access")
             self.set_secure_cookie("FEDERICO", 'OK', expires_days=7)
-            self.redirect("/root1", status=303)
+            self.redirect("/root1", status=302)
         else:
             print("Wrong password")
             self.write('403 Forbidden')
@@ -97,10 +97,10 @@ signal.alarm(0)
 try:
     http_server = tornado.httpserver.HTTPServer(Application(),
                                                 # ssl_options={
-        # "certfile": "/var/pyTest/keys/ca.csr",
-        # "keyfile": "/var/pyTest/keys/ca.key",
-    # })
-    )
+                                                # "certfile": "/var/pyTest/keys/ca.csr",
+                                                # "keyfile": "/var/pyTest/keys/ca.key",
+                                                # })
+                                                )
     http_server.listen(8080)
     # http_server.listen(80) TODO nginx config
     # http_server.listen(443) TODO nginx ssl config
