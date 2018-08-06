@@ -8,6 +8,8 @@ before_install:
   - docker build -t smarthome_gui .
 script:
   - docker run -i -t -d -p 8080:8080 smarthome_gui
+  - sleep 5
   - curl localhost:8080
+  - sleep 5
   - docker rm $(docker stop $(docker ps -a -q --filter ancestor=smarthome_gui --format="{{.ID}}"))
 
