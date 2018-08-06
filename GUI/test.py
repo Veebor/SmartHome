@@ -1,4 +1,4 @@
-import signal
+# import signal
 import tornado.ioloop
 import tornado.web
 import tornado.escape
@@ -13,12 +13,12 @@ cookie_code = base64.b64encode(os.urandom(50)).decode('ascii')
 print("Cookie code: " + cookie_code)
 
 
-def interrupted(signum, frame):
-    print("TRAVIS")
-    exit(0)
+# def interrupted(signum, frame):
+#     print("TRAVIS")
+#     exit(0)
 
 
-signal.signal(signal.SIGALRM, interrupted)
+# signal.signal(signal.SIGALRM, interrupted)
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -68,6 +68,8 @@ class LoginHandler(tornado.web.RequestHandler):
             print("Wrong password")
             self.write('403 Forbidden')
 
+    def get(self):
+        self.redirect("/")
 
 
 class Application(tornado.web.Application):
@@ -89,10 +91,10 @@ class Application(tornado.web.Application):
 
 
 print("OK")
-print("Build succeded!")
-signal.alarm(TIMEOUT)
-travis = int(input("Write 1: "))
-signal.alarm(0)
+print("Build suceded!")
+# signal.alarm(TIMEOUT)
+# travis = int(input("Write 1: "))
+# signal.alarm(0)
 
 try:
     http_server = tornado.httpserver.HTTPServer(Application(),
