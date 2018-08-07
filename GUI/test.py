@@ -72,6 +72,18 @@ class LoginHandler(tornado.web.RequestHandler):
         self.redirect("/")
 
 
+class LogoutHandler(tornado.web.RequestHandler):
+    def get(self):
+        if self.get_secure_cookie("LUCA"):
+            self.clear_cookie("LUCA")
+            self.write('You are logged-out')
+        elif self.get_secure_cookie("FEDERICO"):
+            self.clear_cookie("FEDERICO")
+            self.write('You are logged-out')
+        else:
+            self.write('You are not logged-in, you cannot log out')
+
+
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
@@ -80,7 +92,8 @@ class Application(tornado.web.Application):
             (r'/index.html', MainHandler),
             (r'/root', RootHandler),
             (r'/root1', Root1Handler),
-            (r'/login', LoginHandler)
+            (r'/login', LoginHandler),
+            ('r/logout', LogoutHandler)
         ]
         settings = {
             "debug": True,
