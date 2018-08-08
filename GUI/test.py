@@ -111,11 +111,11 @@ print("Build suceded!")
 
 try:
     http_server = tornado.httpserver.HTTPServer(Application(),
-                                                # ssl_options={
-                                                # "certfile": "/var/pyTest/keys/ca.csr",
-                                                # "keyfile": "/var/pyTest/keys/ca.key",
-                                                # })
-                                                )
+                                                ssl_options={
+                                                "certfile": "/cert.pem",
+                                                "keyfile": "/privkey.pem",
+                                                })
+                                              
     http_server.listen(8080)
     # http_server.listen(80) TODO nginx config
     # http_server.listen(443) TODO nginx ssl config
