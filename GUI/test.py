@@ -20,36 +20,33 @@ print("Cookie code: " + cookie_code)
 
 # signal.signal(signal.SIGALRM, interrupted)
 
+class BaseHandler(tornado.web.RequestHandler):
+    def get_current_user(self):
+        if self.get_secure_cookie('CookieMonster'):
+            return self.get_secure_cookie('CookieMonster').decode('ascii')
 
-class MainHandler(tornado.web.RequestHandler):
+
+
+class MainHandler(BaseHandler):
     def get(self):
-        if self.get_secure_cookie("LUCA"):
+        if self.current_user == 'Luca':
             self.redirect("/root")
-        elif self.get_secure_cookie("FEDERICO"):
+        elif self.current_user == 'Fede':
             self.redirect("/root1")
         else:
             self.render("index.html", title="Smarthome")
 
 
-class RootHandler(tornado.web.RequestHandler):
+class RootHandler(BaseHandler):
+    @tornado.web.authenticated
     def get(self):
-        if not self.get_secure_cookie("LUCA"):
-            print("Someone is trying to gain access without password!")
-            self.redirect("index.html")
-        else:
+        if self.current_user == 'Luca':
             self.render("static/root.html", title="Luca")
-
-
-class Root1Handler(tornado.web.RequestHandler):
-    def get(self):
-        if not self.get_secure_cookie("FEDERICO"):
-            print("Someone is trying to gain access without password!")
-            self.redirect("index.html")
-        else:
+        elif self.current_user == 'Fede':
             self.render("static/root1.html", title="Federico")
 
 
-class LoginHandler(tornado.web.RequestHandler):
+class LoginHandler(BaseHandler):
     def post(self):
         data = json.loads(self.request.body)
         user = base64.b64decode(data['myUser']).decode('utf-8')
@@ -58,12 +55,12 @@ class LoginHandler(tornado.web.RequestHandler):
         print(password)
         if user == "Luca" and password == "ciccio":
             print(user + " gained access")
-            self.set_secure_cookie("LUCA", 'OK', expires_days=7)
-            self.redirect("/root", status=302)
+            self.set_secure_cookie("CookieMonster", 'Luca', expires_days=7)
+            # self.redirect("/root", status=302)
         elif user == "Fede" and password == "pippo":
             print(user + " gained access")
-            self.set_secure_cookie("FEDERICO", 'OK', expires_days=7)
-            self.redirect("/root1", status=302)
+            self.set_secure_cookie("CookieMonster", 'Fede', expires_days=7)
+            # self.redirect("/root1", status=302)
         else:
             print("Wrong password")
             self.write('403 Forbidden')
@@ -72,16 +69,11 @@ class LoginHandler(tornado.web.RequestHandler):
         self.redirect("/")
 
 
-class LogoutHandler(tornado.web.RequestHandler):
+class LogoutHandler(BaseHandler):
+    @tornado.web.authenticated
     def get(self):
-        if self.get_secure_cookie("LUCA"):
-            self.clear_cookie("LUCA")
-            self.write('You are logged-out')
-        elif self.get_secure_cookie("FEDERICO"):
-            self.clear_cookie("FEDERICO")
-            self.write('You are logged-out')
-        else:
-            self.write('You are not logged-in, you cannot log out')
+        self.clear_cookie("CookieMonster")
+        self.write('You are logged-out')
 
 
 class Application(tornado.web.Application):
@@ -91,14 +83,16 @@ class Application(tornado.web.Application):
             (r'/', MainHandler),
             (r'/index.html', MainHandler),
             (r'/root', RootHandler),
-            (r'/root1', Root1Handler),
+            (r'/root1', RootHandler),
             (r'/login', LoginHandler),
-            ('r/logout', LogoutHandler)
+            (r'/logout', LogoutHandler) # TODO logout button
+            # TODO add other handlers (e.g. Kitchen)
         ]
         settings = {
             "debug": True,
             "static_path": os.path.join(os.path.dirname(__file__), "static"),
-            "cookie_secret": cookie_code
+            "cookie_secret": cookie_code,
+            "login_url": "/"
         }
         tornado.web.Application.__init__(self, handlers, **settings)
 
@@ -118,8 +112,6 @@ try:
                                                 )
                                               
     http_server.listen(8080)
-    # http_server.listen(80) TODO nginx config
-    # http_server.listen(443) TODO nginx ssl config
     tornado.ioloop.IOLoop.instance().start()
 except KeyboardInterrupt:
     print("\nClosing...")

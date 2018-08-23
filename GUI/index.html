@@ -2,7 +2,7 @@
 
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 <!--<![endif]-->
-
+<meta name="apple-mobile-web-app-capable" content="yes">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,7 @@
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="{{ static_url("style.css") }}">
     <link rel="stylesheet" href="{{ static_url("left-nav-style.css") }}">
-
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 
 <body>
@@ -71,13 +71,6 @@ Panello uscente posizioniamo sotto il checkbox, ma non obbligatoriamente subito 
 
         ul {list-style-type: none;}
         body {font-family: Verdana, sans-serif;}
-
-        .month {
-            padding: 70px 25px;
-            width: 100%;
-            background: #1abc9c;
-            text-align: center;
-        }
 
         .month .prev {
             float: left;
@@ -245,8 +238,8 @@ Panello uscente posizioniamo sotto il checkbox, ma non obbligatoriamente subito 
                     }
 
                     img.avatar {
-                        width: 40%;
-                        border-radius: 50%;
+                        width: 20%;
+			height: auto;                         
                     }
 
                     .container {
@@ -269,13 +262,7 @@ Panello uscente posizioniamo sotto il checkbox, ma non obbligatoriamente subito 
                 </style>
 
 
-
-
-
-
-            <div class="imgcontainer">
-                <img src="/static/img_avatar.png" alt="Avatar" class="button">
-            </div>
+               <img  class="imgcontainer" src="/static/img_avatar.png" width="200" height="200" alt="Avatar">
 
             </label>
             <div class="container">
@@ -309,8 +296,12 @@ Panello uscente posizioniamo sotto il checkbox, ma non obbligatoriamente subito 
                     var xhr = new XMLHttpRequest();
                     xhr.open("POST", url);
                     xhr.send(tosend);
+		setTimeout(myloc, 2000) 
                 }
-            </script>
+	function myloc() {
+     		window.location.assign("/root")
+		}
+func          </script>
 
 
 
