@@ -1,4 +1,3 @@
-# import signal
 import tornado.ioloop
 import tornado.web
 import tornado.escape
@@ -7,18 +6,9 @@ import base64
 import time
 import json
 
-TIMEOUT = 5
-
 cookie_code = base64.b64encode(os.urandom(50)).decode('ascii')
 print("Cookie code: " + cookie_code)
 
-
-# def interrupted(signum, frame):
-#     print("TRAVIS")
-#     exit(0)
-
-
-# signal.signal(signal.SIGALRM, interrupted)
 
 class BaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
@@ -29,10 +19,8 @@ class BaseHandler(tornado.web.RequestHandler):
 
 class MainHandler(BaseHandler):
     def get(self):
-        if self.current_user == 'Luca':
+        if self.current_user:
             self.redirect("/root")
-        elif self.current_user == 'Fede':
-            self.redirect("/root1")
         else:
             self.render("index.html", title="Smarthome")
 
@@ -40,10 +28,7 @@ class MainHandler(BaseHandler):
 class RootHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        if self.current_user == 'Luca':
-            self.render("static/root.html", title="Luca")
-        elif self.current_user == 'Fede':
-            self.render("static/root1.html", title="Federico")
+        self.render("static/root.html", title="SmartHome Panel")
 
 
 class LoginHandler(BaseHandler):
@@ -74,6 +59,7 @@ class LogoutHandler(BaseHandler):
     def get(self):
         self.clear_cookie("CookieMonster")
         self.write('You are logged-out')
+        self.redirect("/")
 
 
 class Application(tornado.web.Application):
@@ -85,8 +71,7 @@ class Application(tornado.web.Application):
             (r'/root', RootHandler),
             (r'/root1', RootHandler),
             (r'/login', LoginHandler),
-            (r'/logout', LogoutHandler) # TODO logout button
-            # TODO add other handlers (e.g. Kitchen)
+            (r'/logout', LogoutHandler)
         ]
         settings = {
             "debug": True,
@@ -99,16 +84,13 @@ class Application(tornado.web.Application):
 
 print("OK")
 print("Build suceded!")
-# signal.alarm(TIMEOUT)
-# travis = int(input("Write 1: "))
-# signal.alarm(0)
 
 try:
     http_server = tornado.httpserver.HTTPServer(Application(),
-                                                # ssl_options={
-                                                # "certfile": "/cert.pem",
-                                                # "keyfile": "/privkey.pem",
-                                                # })
+                                                #ssl_options={
+                                                #"certfile": "/cert.pem",
+                                                #"keyfile": "/privkey.pem",
+                                                #})
                                                 )
                                               
     http_server.listen(8080)

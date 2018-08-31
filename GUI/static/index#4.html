@@ -1,6 +1,8 @@
+
 <!doctype html>
 
-<html lang="it">
+<html lang="it" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <!--<![endif]-->
 
 <head>
@@ -17,92 +19,92 @@
 
 </head>
 
-<body>
+    <input type="checkbox" id="nav-toggle" hidden>
 
-<input type="checkbox" id="nav-toggle" hidden>
-
-<nav class="nav">
+    <nav class="nav">
 
 
-  <label for="nav-toggle" class="nav-toggle" onclick></label>
+      <label for="nav-toggle" class="nav-toggle" onclick></label>
 
-  <h2 class="logo">
-    <a href="http://moxnet.tk">ClFbV.cf</a>
-  </h2>
-  <ul>
+      <h2 class="logo">
+        <a href="http://moxnet.tk">ClFbV.cf</a>
+      </h2>
 
-    <li><a href="index%231.html">Kitchen</a>
-    <li><a href="index%232.html">Bedrooms</a>
-    <li><a href="index%233.html">Laundry</a>
-    <li><a href="index%234.html">Living Room</a>
-    <li><a href="index%235.html">Entrance</a>
-    <li><a href="index%236.html">Facilities</a>
-    <li><a href="index%238.html">Sensori</a>
-    <li><a href="index%237.html">Security</a>
-  </ul>
-</nav>
-<p STYLE="text-align: center" >
-  <font size="20">Living Room
-  </font>
-</p>
-<p style="text-align: center">
-<label class="btcheck" style="background-image: url('light_office_desk.png')" for="myonoffswitchi" onclick="uction()"></label>
-<input type="checkbox" name="onoffswitchi" class="onoffswitch-checkbox" id="myonoffswitchi" checked>
-</p><p style="text-align: center">
+      <ul>
 
-<label class="btcheck" style="background-image: url('light_floor_lamp.png')" for="myonoffswitchm" onclick="unction()"></label>
-<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitchm" checked>
-</p><p style="text-align: center">
+          <li><a href="/root">Home</a></li>
+          <li><a href="/static/index%232.html">Lights</a></li>
+          <li><a href="/static/index%233.html">Airconditioning</a></li>
+          <li><a href="/static/index%234.html">Remote</a></li>
+          <li><a href="/static/index%235.html">Sensors</a></li>
+          <li><a href="/static/index%236.html">Facilities</a></li>
+          <li><a href="/static/index%238.html">Security</a></li>
 
-<label class="btcheck" style="background-image: url('light_downlight.png')" for="myonoffswitch" onclick="uncion()"></label>
-<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-</p>
+      </ul>
 
-<style>
-  .btcheck{
+    </nav>
 
-    width: 100px;
-    height: 100px;
-    background: #1abc9c no-repeat center center;
-    background-size: cover;
-    bottom: 150px;
-  }
+    <style>
+        #overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 2;
+            cursor: pointer;
+        }
+    </style>
+    </head>
+    <body>
+
+    <div id="overlay" >
 
 
-</style>
 
-<script>
-  function uction() {
-    var checBox = document.getElementById("myonoffswitchi");
-    var text = document.getElementById("text");
-    if (checBox.checked == true){
-      alert("Luce Accesa");
-    } else {
-      alert("Luce Spenta");
-      cheBox.checked == true;
-    }
-  }
-  function uncion() {
-    var checBox = document.getElementById("myonoffswitch");
-    var text = document.getElementById("text");
-    if (checBox.checked == true){
-      alert("Luce Accesa");
-    } else {
-      alert("Luce Spenta");
-      cheBox.checked == true;
-    }
-  }
-  function unction() {
-    var checBox = document.getElementById("myonoffswitchm");
-    var text = document.getElementById("text");
-    if (checBox.checked == true){
-      alert("Luce Accesa");
-    } else {
-      alert("Luce Spenta");
-      cheBox.checked == true;
-    }
-  }
-</script>
+            <li style="text-align: center">
+            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_1.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_2.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_3.png')" ></button>
+            </li>
+            <li style="text-align: center">
+            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_4.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_5.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_6.png')" ></button>
+            </li>
+            <li style="text-align: center">
+            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_7.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_8.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_9.png')" ></button>
+            </li>
+            <li style="text-align: center">
+            <button onclick="off()" class="btcheck" style="background-image:url('edit_numeric_0.png')" ></button>
+            </li>
+
+
+
+
+
+    </div>
+
+    <div style="text-align: center ; padding:20px">
+
+        <button onclick="on()" class="btcheck" style="background-image:url('edit_input_numeric.png')" ></button>
+    </div>
+
+    <script>
+        function on() {
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function off() {
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
 
 
 

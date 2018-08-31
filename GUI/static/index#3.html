@@ -30,41 +30,162 @@
     <a href="http://moxnet.tk">ClFbV.cf</a>
   </h2>
   <ul>
-
-
-      <li><a href="index%231.html">Kitchen</a>
-      <li><a href="index%232.html">Bedrooms</a>
-      <li><a href="index%233.html">Laundry</a>
-      <li><a href="index%234.html">Living Room</a>
-      <li><a href="index%235.html">Entrance</a>
-      <li><a href="index%236.html">Facilities</a>
-      <li><a href="index%238.html">Sensori</a>
-      <li><a href="index%237.html">Security</a>
+      <li><a href="/root">Home</a></li>
+      <li><a href="/static/index%232.html">Lights</a></li>
+      <li><a href="/static/index%233.html">Airconditioning</a></li>
+      <li><a href="/static/index%234.html">TV-Controller</a></li>
+      <li><a href="/static/index%235.html">Sensors</a></li>
+      <li><a href="/static/index%236.html">Facilities</a></li>
+      <li><a href="/static/index%238.html">Security</a></li>
     </ul>
 </nav>
 
 
-<p STYLE="text-align: center" >
-  <font size="20">Laundry
-  </font>
+<p STYLE="text-align: center " >
+    <font size="6">Air-Conditioner</font>
+</p>
+<p STYLE="text-align: center">
+
+
+
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    <label class="btcheck" style="background-image: url('control_on_off.png')" for="myonoffswitch" onclick="unction()"></label>
+
+    <style>
+        .btcheck{
+
+            width: 100px;
+            height: 100px;
+            background: #1abc9c no-repeat center center;
+            background-size: cover;
+            bottom: 150px;
+        }
+
+
+    </style>
+
+    <script>
+        function unction() {
+            var checBox = document.getElementById("myonoffswitch");
+            var text = document.getElementById("text");
+            if (checBox.checked == true){
+                alert("Condizionatore Acceso");
+            } else {
+                alert("Condizionatore Spento");
+                cheBox.checked == true;
+            }
+        }
+    </script>
+
+    <style>
+        .bti{
+
+            width: 200px;
+            height: 200px;
+            background-color: #1abc9c;
+            background-repeat: no-repeat;
+            background-image: url("control_on_off.png");
+            background-position: center center;
+            background-size: cover;
+            bottom: 150px;
+        }
+
+
+
+
+
+    </style>
+
 </p>
 
 
-<p style="text-align: left">
-  <font size="6">CH4</font>
-  <label class="switch">
-    <input type="checkbox" checked>
-    <span class="slider round"></span>
-  </label>
-</p>
+<p STYLE="text-align: center">
+    <style>
+        .slidecontainer {
+            width: 100%;
+            position: center;
+        }
 
-<p style="text-align: left">
-  <font size="6">H20</font>
-  <label class="switch">
-    <input type="checkbox" checked>
-    <span class="slider round"></span>
-  </label>
+        .slideri {
+            -webkit-appearance: none;
+            width: 40%;
+            height: 15px;
+            border-radius: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            position: center;
+        }
+
+        .slideri:hover {
+            opacity: 1;
+        }
+
+        .slideri::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .slideri::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+    </style>
 </p>
+<p style="align-content: center">Set your Temperature</p>
+
+<div class="slidecontainer" >
+    <label>
+        <input type="range" min="18" max="28" value="22" class="slideri" id="myRange">
+    </label>
+
+    <button class="btj" style="background-color:  #1abc9c" onclick="alert('Temperatura Impostata')"><span id="demo" style="width: 200px"></span></button>
+</div>
+
+
+
+
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
+</script>
+
+
+
+
+
+
+
+
+
+<style>
+    .btu{
+
+        width: 200px;
+        height: 200px;
+        background: #1abc9c no-repeat center center;
+        background-image: url("control_arrow_downward.png");
+        background-size: cover;
+        bottom: 150px;
+    }
+
+
+</style>
 
 
 

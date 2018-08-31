@@ -4,6 +4,7 @@
 <!--<![endif]-->
 
 <head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,14 +43,14 @@ Panello uscente posizioniamo sotto il checkbox, ma non obbligatoriamente subito 
     </h2>
     <ul>
 
-        <li><a href="{{ static_url("index%231.html") }}">Kitchen</a></li>
-        <li><a href="{{ static_url("index%232.html") }}">Bedrooms</a></li>
-        <li><a href="{{ static_url("index%233.html") }}">Laundry</a></li>
-        <li><a href="{{ static_url("index%234.html") }}">Living Room</a></li>
-        <li><a href="{{ static_url("index%235.html") }}">Entrance</a></li>
+        <li><a href="/root">Home</a></li>
+        <li><a href="{{ static_url("index%232.html") }}">Lights</a></li>
+        <li><a href="{{ static_url("index%233.html") }}">Airconditioning</a></li>
+        <li><a href="{{ static_url("index%234.html") }}">TV-Controller</a></li>
+        <li><a href="{{ static_url("index%235.html") }}">Sensors</a></li>
         <li><a href="{{ static_url("index%236.html") }}">Facilities</a></li>
-        <li><a href="{{ static_url("index%238.html") }}">Sensors</a></li>
-        <li><a href="{{ static_url("index%237.html") }}">Security</a></li>
+        <li><a href="{{ static_url("index%238.html") }}">Security</a></li>
+
 
     </ul>
 </nav>
@@ -63,11 +64,23 @@ Panello uscente posizioniamo sotto il checkbox, ma non obbligatoriamente subito 
         </header>
         <section>
             <p style="text-align: center;">
-                <a href="index.html" class="btn btn-primary">Home</a>
+                <a id='wdgt_5b87092c0569824d3e8b4567' href='https://www.3bmeteo.com/meteo/chieri/'>Meteo Chieri</a>
+                <script type="text/javascript">
+                    var wid='5b87092c0569824d3e8b4567';
+                    (function() {
+                        var wdgt = document.createElement('script'); wdgt.type = 'text/javascript'; wdgt.async = true;
+                        wdgt.src = '//widget.3bmeteo.com/widget.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wdgt, s);
+                    })();
+                </script>
+            </p>
+            <p style="text-align: center;">
+                <a href="/logout" class="btn btn-primary">Logout</a>
 
 
 
             </p>
+
 
 
 
