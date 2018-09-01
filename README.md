@@ -1,7 +1,7 @@
 # Smarthome
 **GUI Building** 
 
-[![Build Status](https://travis-ci.org/ClFbV/Smarthome.svg?branch=master)](https://travis-ci.org/ClFbV/Smarthome) 
+[![Build Status](https://travis-ci.org/ClFbV/SmartHome.svg?branch=master)](https://travis-ci.org/ClFbV/SmartHome) 
 
 **The NEW home-automation project.** 
 
