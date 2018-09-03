@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/federico/Documents/Progetti/ClFbV/Smarthome/Firmware/src/./DNSServer.h
+WiFiUdp.h
+-
+
+/Users/federico/Documents/Progetti/ClFbV/Smarthome/Firmware/src/DNSServer.cpp
+./DNSServer.h
+/Users/federico/Documents/Progetti/ClFbV/Smarthome/Firmware/src/./DNSServer.h
+lwip/def.h
+-
+Arduino.h
+-
+
+/Users/federico/Documents/Progetti/ClFbV/Smarthome/Firmware/src/Firmware.cpp
+Arduino.h
+-
+ESP8266WiFi.h
+/Users/federico/Documents/Progetti/ClFbV/Smarthome/Firmware/src/ESP8266WiFi.h
+EEPROM.h
+-
+ESP8266Ping.h
+-
+ESP8266WebServer.h
+-
+./DNSServer.h
+/Users/federico/Documents/Progetti/ClFbV/Smarthome/Firmware/src/./DNSServer.h
+MQTT.h
+/Users/federico/Documents/Progetti/ClFbV/Smarthome/Firmware/src/MQTT.h
+

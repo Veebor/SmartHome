@@ -1,4 +1,5 @@
 //#include <PubSubClient.h>
+#include <Arduino.h>
 
 #include "ESP8266WiFi.h"
 #include <EEPROM.h>
@@ -6,14 +7,13 @@
 #include <ESP8266WebServer.h>
 #include "./DNSServer.h"
 #include "MQTT.h"
-
+#include ""
 
 const char* mqtt_server = "clfbv.cf";
 const char* user= "NodeMCU";
 const char* password= "SmartHome";
 char* ssid;
 char* passw;
-String ssidx;
 IPAddress    apIP(10, 10, 10, 1);
 
 WiFiClient espClient;
@@ -25,16 +25,18 @@ String responseHTML = "<!DOCTYPE html><html><head><title>Sensor 1</title></head>
                       "<h1>Welcome to SmartHome!</h1><p>Insert your SSID and password"
                       "here to configure this sensor.</p>"
                       "<form action='http://10.10.10.1/submit' method='POST'>"
-                      "SSID:<br><input type='text' name='ssid' value='SSID'><br>"
-                      "Password:<br><input type='text' name='password' value='password'><br><br>"
+                      "SSID:<br><input type='text' name='ssid' value=''><br>"
+                      "Password:<br><input type='text' name='password' value=''><br><br>"
                       "<input type='submit' value='Submit'></body></html>"
                       "</form>";
 
 long lastMsg = 0;
 char msg[50];
-int value = 0;
-int wifitry = 0;
-int ssidpswins = 0;
+//int value = 0;
+//int wifitry = 0;
+//int ssidpswins = 0;
+int reconn = 0;
+int mqtt_retry = 0;
 // int ssidlen2;
 // int passwlen;
 
@@ -64,13 +66,15 @@ int handleSubmit() {
         Serial.println(passwx);
         char passw[passwx.length()];
         passwx.toCharArray(passw, passwx.length());
+        server.send(200, "text/plain", "OK. Thank you from SmartHome!");
+        delay(1000);
+        return 1;
         // for (int k = ssidx.length() + 3; k < (passwx.length() + ssidx.length() + 3); k++) {
         //   EEPROM.put(k, passw[k - (ssidx.length() + 3)]);
         //   EEPROM.commit();
         // }
         // EEPROM.put(1, passwx.length());
         // EEPROM.commit();
-        return 1;
       }
     }
   }
@@ -90,31 +94,27 @@ void WiFiuserpass() {
   }
   server.on("/", handleRoot);
   server.on("/submit", handleSubmit);
+  server.onNotFound([]() {
+    server.send(200, "text/html", responseHTML);
+  });
   //Redirect all requests to our IP
   dnsServer.start(53, "*", apIP);
   //Start server
   server.begin();
-  server.onNotFound([]() {
-    server.send(200, "text/html", responseHTML);
-  });
   Serial.println("Server Started");
   while(1) {
     dnsServer.processNextRequest();
     server.handleClient();
     if(handleSubmit() == 1) {
+      delay(1000);
       WiFi.softAPdisconnect(true);
-      ssidpswins = 1;
       break;
     }
   }
-  setup_wifi();
 }
 
 void setup_wifi() {
   delay(10);
-  if (ssidpswins == 0) {
-    WiFiuserpass();
-  }
   // EEPROM.get(0, ssidlen2);
   // EEPROM.get(1, passwlen);
   // if (ssidlen2!=NULL || ssid!=NULL) {
@@ -127,30 +127,24 @@ void setup_wifi() {
   // }
   // else {
   //   WiFiuserpass();
-  // }
-  delay(10);
-  // We start by connecting to a WiFi network
-  Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
+  //
+    Serial.println();
+    Serial.print("Connecting to ");
+    Serial.println(ssid);
 
-  WiFi.begin(ssid, passw);
+    WiFi.begin(ssid, passw);
 
-  while (WiFi.status() != WL_CONNECTED) {
-    int wifitry = wifitry + 1;
-    delay(1000);
-    Serial.print(".");
-    if (wifitry > 14) {
-      Reboot();
+    while (WiFi.status() != WL_CONNECTED) {
+      delay(1000);
+      Serial.print(".");
     }
-  }
 
-  randomSeed(micros());
+    randomSeed(micros());
 
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
+    Serial.println("");
+    Serial.println("WiFi connected");
+    Serial.println("IP address: ");
+    Serial.println(WiFi.localIP());
 }
 
 void callback(String &topic, String &payload) {
@@ -177,24 +171,27 @@ void mqttconnect() {
     clientId += String(random(0xffff), HEX);
     // Attempt to connect
     if (client.connect(clientId.c_str(), user, password)) {
+      mqtt_retry = 0;
       Serial.println("connected");
       // Once connected, publish an announcement...
       client.publish("EthErr", "Connected!", 0, 2);
       // ... and resubscribe
       client.subscribe("ToSens", 2);
     } else {
-        if ((!Ping.ping("clfbv.cf")) && (Ping.ping("google.com"))) {
-          Serial.println("Internet connection working, server down");
-          //Change mqtt_server
-        }
-        else if ((!Ping.ping("clfbv.cf")) && (!Ping.ping("google.com"))) {
-          Serial.println("Internet connection not working");
-          setup_wifi();
-        }
-      Serial.print("failed...");
-      Serial.println(" try again in 5 seconds");
-      // Wait 5 seconds before retrying
-      delay(5000);
+      mqtt_retry = mqtt_retry + 1;
+      // If retry > 14 change server
+      if (mqtt_retry > 14) {
+        Serial.print("Changing MQTT Server");
+        client.disconnect();
+        client.begin("cfv.clfbv.cf", espClient);
+        delay(2500);
+      }
+      else {
+        Serial.print("failed...");
+        Serial.println(" try again in 2.5 seconds");
+        // Wait 2.5 seconds before retrying
+        delay(2500);
+      }
     }
   }
 }
@@ -203,9 +200,9 @@ void setup() {
   pinMode(D4, OUTPUT);     // Initialize the D4 pin as an output
   pinMode(D3, OUTPUT);
   pinMode(A0, INPUT);
-  EEPROM.begin(512);
   Serial.begin(115200);
   digitalWrite(D3, LOW);
+  WiFiuserpass();
   setup_wifi();
   client.begin(mqtt_server, espClient);
   client.onMessage(callback);
@@ -213,18 +210,35 @@ void setup() {
 }
 
 void loop() {
+  if (WiFi.status() != WL_CONNECTED) {
+    WiFi.reconnect();
+  }
   if (!client.connected()) {
     mqttconnect();
   }
   client.loop();
 
+
   long now = millis();
-  if (now - lastMsg > 2000) {
-     lastMsg = now;
-     int eth = analogRead(A0);
-     snprintf (msg, 75, "Ethanol = %ld", eth);
-     Serial.print("Publish message: ");
-     Serial.println(msg);
-     client.publish("EthSens", msg, 0, 2);
+  if (now - lastMsg > 1800000) {
+    if ((!Ping.ping("clfbv.cf")) && (!Ping.ping("google.com"))) {
+      if (reconn > 14) {
+        WiFi.mode(WIFI_OFF);
+        setup_wifi();
+      }
+      reconn = reconn + 1;
+      Serial.println("Internet connection not working");
+      WiFi.reconnect();
+      delay(1000);
+    }
+    else {
+      reconn = 0;
+    }
+    lastMsg = now;
+    int eth = analogRead(A0);
+    snprintf (msg, 75, "Ethanol = %ld", eth);
+    Serial.print("Publish message: ");
+    Serial.println(msg);
+    client.publish("EthSens", msg, 0, 2);
    }
 }
