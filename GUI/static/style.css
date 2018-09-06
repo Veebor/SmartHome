@@ -29,8 +29,8 @@ body {
 
 
 
-::-webkit-scrollbar { 
-    display: none; 
+::-webkit-scrollbar {
+    display: none;
 }
 main {
     max-width: 1024px;
@@ -59,8 +59,8 @@ footer {
 p {
     margin-bottom: 16px;
 }
-#element::-webkit-scrollbar { 
-    display: none; 
+#element::-webkit-scrollbar {
+    display: none;
 }
 
 hr {
@@ -539,8 +539,7 @@ input:checked + .slider:before {
   height: 26px;
   width: 26px;
   left: 4px;
-  bottom: 4px;
-  background-color: white;
+  bottom: 4px;f  background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -567,3 +566,51 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+.item-content{
+
+
+    border: 0;
+    color: #dadada !important;
+
+
+    word-wrap: break-word;
+    display: inline-block;
+    line-height: 1.25;
+    text-align: left;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: .5rem 1rem;
+    font-size: 30px;
+    font-weight: 400;
+
+
+  }
+
+  .content{
+
+    border: 0;
+    color: #dadada !important;
+
+
+    word-wrap: break-word;
+    display: inline-block;
+    line-height: 1.25;
+    text-align: left;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: .5rem 1rem;
+    font-size: 30px;
+    font-weight: 400;
+    }
+
+  .item-inner {
+    text-align: left;
+  }
