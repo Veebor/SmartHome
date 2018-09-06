@@ -12,8 +12,8 @@
   <meta name="description" content="SmartHOME" />
   <meta name="keywords" content="" />
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="left-nav-style.css">
+  <link rel="stylesheet" href="{{ static_url("style.css") }}">
+  <link rel="stylesheet" href="{{ static_url("left-nav-style.css") }}">
 
 </head>
 
@@ -31,12 +31,12 @@
   </h2>
   <ul>
       <li><a href="/root">Home</a></li>
-      <li><a href="/static/index%232.html">Lights</a></li>
-      <li><a href="/static/index%233.html">Airconditioning</a></li>
-      <li><a href="/static/index%234.html">TV-Controller</a></li>
-      <li><a href="/static/index%235.html">Sensors</a></li>
-      <li><a href="/static/index%236.html">Facilities</a></li>
-      <li><a href="/static/index%238.html">Security</a></li>
+      <li><a href="/lights">Lights</a></li>
+      <li><a href="/aircon">Airconditioning</a></li>
+      <li><a href="/tvcon">TV-Controller</a></li>
+        <li><a href="/sensors">Sensors</a></li>
+        <li><a href="/facil">Facilities</a></li>
+        <li><a href="/sec">Security</a></li>
     </ul>
 </nav>
 
@@ -49,7 +49,7 @@
 
 
     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-    <label class="btcheck" style="background-image: url('control_on_off.png')" for="myonoffswitch" onclick="unction()"></label>
+    <label class="btcheck" style="background-image: url('/static/control_on_off.png')" for="myonoffswitch" onclick="unction()"></label>
 
     <style>
         .btcheck{
@@ -84,7 +84,7 @@
             height: 200px;
             background-color: #1abc9c;
             background-repeat: no-repeat;
-            background-image: url("control_on_off.png");
+            background-image: url("/static/control_on_off.png");
             background-position: center center;
             background-size: cover;
             bottom: 150px;
@@ -151,9 +151,9 @@
         <button class="btj" style="background-color:  #1abc9c" onclick="alert('Temperatura Impostata')"><span id="demo" style="width: 200px"></span></button>
 </div>
     <li style="text-align: center">
-    <button onclick="on()" class="btcheck" style="background-image:url('vent_ventilation_control.png')" ></button>
-    <button onclick="on()" class="btcheck" style="background-image:url('vent_ventilation_level_3.png')" ></button>
-    <button onclick="on()" class="btcheck" style="background-image:url('vent_air_filter.png')" ></button>
+    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_control.png')" ></button>
+    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_level_3.png')" ></button>
+    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_air_filter.png')" ></button>
     </li>
 
 
@@ -189,17 +189,17 @@
 
 
                 <li style="text-align: center">
-                    <button onclick="off()" class="btcheck" style="background-image:url('fts_blade_arc_50.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('fts_blade_z_70.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('vent_ventilation_level_3.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('vent_air_filter.png')" ></button>
+                    <button onclick="off()" class="btcheck" style="background-image:url('/static/fts_blade_arc_50.png')" ></button>
+                    <button onclick="on()" class="btcheck" style="background-image:url('/static/fts_blade_z_70.png')" ></button>
+                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_level_3.png')" ></button>
+                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_air_filter.png')" ></button>
                 </li>
 
                 <li style="text-align: center">
-                    <button onclick="on()" class="btcheck" style="background-image:url('vent_ventilation_control.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('vent_ventilation_control.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('vent_ventilation_level_3.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('vent_air_filter.png')" ></button>
+                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_control.png')" ></button>
+                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_control.png')" ></button>
+                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_level_3.png')" ></button>
+                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_air_filter.png')" ></button>
                 </li>
 
                 <p style="text-align: center">
@@ -223,7 +223,7 @@
                     width: 200px;
                     height: 200px;
                     background: #1abc9c no-repeat center center;
-                    background-image: url("control_arrow_downward.png");
+                    background-image: url("/static/control_arrow_downward.png");
                     background-size: cover;
                     bottom: 150px;
                 }
@@ -235,7 +235,7 @@
 
         <div style="text-align: center ; padding:20px">
 
-            <button onclick="on()" class="btcheck" style="background-image:url('steuer_plus.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/steuer_plus.png')" ></button>
         </div>
 
         <script>

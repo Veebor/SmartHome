@@ -24,7 +24,7 @@ class MainHandler(BaseHandler):
         if self.current_user:
             self.redirect("/root")
         else:
-            self.render("index.html", title="Smarthome")
+          self.render("index.html", title="Smarthome")
 
 
 class RootHandler(BaseHandler):
@@ -78,6 +78,41 @@ class SubmitInfoHandler(BaseHandler):
         self.redirect("/")
 
 
+class LightsHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        self.render("static/index2.html", title="Lights")
+
+
+class AirconHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        self.render("static/index3.html", title="Air-conditoning")
+
+
+class TVConHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        self.render("static/index4.html", title="TV-Controller")
+
+
+class SensorHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        self.render("static/index5.html", title="Sensor")
+
+
+class FacilHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        self.render("static/index6.html", title="Facilities")
+
+
+class SecHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        self.render("static/index8.html", title="Security")
+
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -89,7 +124,13 @@ class Application(tornado.web.Application):
             (r'/root1', RootHandler),
             (r'/login', LoginHandler),
             (r'/logout', LogoutHandler),
-            (r'/submit', SubmitInfoHandler)
+            (r'/submit', SubmitInfoHandler),
+            (r'/lights', LightsHandler),
+            (r'/aircon', AirconHandler),
+            (r'/tvcon', TVConHandler),
+            (r'/sensor', SensorHandler),
+            (r'/facil', FacilHandler),
+            (r'/sec', SecHandler)
         ]
         settings = {
             "debug": True,

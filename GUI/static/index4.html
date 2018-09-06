@@ -14,8 +14,8 @@
   <meta name="description" content="SmartHOME" />
   <meta name="keywords" content="" />
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="left-nav-style.css">
+  <link rel="stylesheet" href="{{ static_url("style.css") }}">
+  <link rel="stylesheet" href="{{ static_url("left-nav-style.css") }}">
 
 </head>
 
@@ -33,12 +33,12 @@
       <ul>
 
           <li><a href="/root">Home</a></li>
-          <li><a href="/static/index%232.html">Lights</a></li>
-          <li><a href="/static/index%233.html">Airconditioning</a></li>
-          <li><a href="/static/index%234.html">Remote</a></li>
-          <li><a href="/static/index%235.html">Sensors</a></li>
-          <li><a href="/static/index%236.html">Facilities</a></li>
-          <li><a href="/static/index%238.html">Security</a></li>
+          <li><a href="/lights">Lights</a></li>
+          <li><a href="/aircon">Airconditioning</a></li>
+          <li><a href="/tvcon">TV-Controller</a></li>
+          <li><a href="/sensors">Sensors</a></li>
+          <li><a href="/facil">Facilities</a></li>
+          <li><a href="/sec">Security</a></li>
 
       </ul>
 
@@ -67,22 +67,22 @@
 
 
             <li style="text-align: center">
-            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_1.png')" ></button>
-            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_2.png')" ></button>
-            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_3.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/edit_numeric_1.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/edit_numeric_2.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/edit_numeric_3.png')" ></button>
             </li>
             <li style="text-align: center">
-            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_4.png')" ></button>
-            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_5.png')" ></button>
-            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_6.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/edit_numeric_4.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/edit_numeric_5.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/edit_numeric_6.png')" ></button>
             </li>
             <li style="text-align: center">
-            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_7.png')" ></button>
-            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_8.png')" ></button>
-            <button onclick="on()" class="btcheck" style="background-image:url('edit_numeric_9.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/edit_numeric_7.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/edit_numeric_8.png')" ></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/edit_numeric_9.png')" ></button>
             </li>
             <li style="text-align: center">
-            <button onclick="off()" class="btcheck" style="background-image:url('edit_numeric_0.png')" ></button>
+            <button onclick="off()" class="btcheck" style="background-image:url('/static/edit_numeric_0.png')" ></button>
             </li>
 
 
@@ -93,7 +93,7 @@
 
     <div style="text-align: center ; padding:20px">
 
-        <button onclick="on()" class="btcheck" style="background-image:url('edit_input_numeric.png')" ></button>
+        <button onclick="on()" class="btcheck" style="background-image:url('/static/edit_input_numeric.png')" ></button>
     </div>
 
     <script>

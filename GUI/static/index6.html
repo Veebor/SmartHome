@@ -12,8 +12,8 @@
   <meta name="description" content="SmartHOME" />
   <meta name="keywords" content="" />
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="left-nav-style.css">
+  <link rel="stylesheet" href="{{ static_url("style.css") }}">
+  <link rel="stylesheet" href="{{ static_url("left-nav-style.css") }}">
 
 </head>
 
@@ -33,12 +33,12 @@
     <ul>
 
       <li><a href="/root">Home</a></li>
-      <li><a href="/static/index%232.html">Lights</a></li>
-      <li><a href="/static/index%233.html">Airconditioning</a></li>
-      <li><a href="/static/index%234.html">TV-Controller</a></li>
-      <li><a href="/static/index%235.html">Sensors</a></li>
-      <li><a href="/static/index%236.html">Facilities</a></li>
-      <li><a href="/static/index%238.html">Security</a></li>
+      <li><a href="/lights">Lights</a></li>
+        <li><a href="/aircon">Airconditioning</a></li>
+        <li><a href="/tvcon">TV-Controller</a></li>
+        <li><a href="/sensors">Sensors</a></li>
+        <li><a href="/facil">Facilities</a></li>
+        <li><a href="/sec">Security</a></li>
     </ul>
 
               </nav>
@@ -59,7 +59,7 @@
       height: 100px;
       background-color: #1abc9c;
       background-repeat: no-repeat;
-      background-image: url("control_arrow_upward.png");
+      background-image: url("/static/control_arrow_upward.png");
       background-position: center center;
       background-size: cover;
       bottom: 150px;
@@ -83,7 +83,7 @@
       width: 100px;
       height: 100px;
       background: #1abc9c no-repeat center center;
-      background-image: url("control_arrow_downward.png");
+      background-image: url("/static/control_arrow_downward.png");
       background-size: cover;
       bottom: 150px;
     }
@@ -136,7 +136,7 @@
     height: 100px;
     background-color: #1abc9c;
     background-repeat: no-repeat;
-    background-image: url("fts_shutter.png");
+    background-image: url("/static/fts_shutter.png");
     background-position: center center;
     background-size: cover;
     bottom: 150px;
@@ -146,7 +146,7 @@
     height: 100px;
     background-color: #1abc9c;
     background-repeat: no-repeat;
-    background-image: url("fts_shutter_80.png");
+    background-image: url("/static/fts_shutter_80.png");
     background-position: center center;
     background-size: cover;
     bottom: 150px;

@@ -1,3 +1,4 @@
+
 <!doctype html>
 
 <html lang="it">
@@ -13,8 +14,8 @@
   <meta name="description" content="SmartHOME" />
   <meta name="keywords" content="" />
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="left-nav-style.css">
+  <link rel="stylesheet" href="{{ static_url("style.css") }}">
+<link rel="stylesheet" href="{{ static_url("left-nav-style.css") }}">
 
 </head>
 
@@ -33,12 +34,12 @@
   <ul>
 
     <li><a href="/root">Home</a></li>
-    <li><a href="/static/index%232.html">Lights</a></li>
-      <li><a href="/static/index%233.html">Airconditioning</a></li>
-      <li><a href="/static/index%234.html">TV-Controller</a></li>
-      <li><a href="/static/index%235.html">Sensors</a></li>
-      <li><a href="/static/index%236.html">Facilities</a></li>
-      <li><a href="/static/index%238.html">Security</a></li>
+    <li><a href="/lights">Lights</a></li>
+    <li><a href="/aircon">Airconditioning</a></li>
+    <li><a href="/tvcon">TV-Controller</a></li>
+    <li><a href="/sensors">Sensors</a></li>
+    <li><a href="/facil">Facilities</a></li>
+    <li><a href="/sec">Security</a></li>
   </ul>
 </nav>
 <p STYLE="text-align: center" >
@@ -46,15 +47,15 @@
   </font>
 </p>
 <p style="text-align: center">
-  <label class="btcheck" style="background-image: url('light_office_desk.png')" for="myonoffswitchi" onclick="uction()"></label>
+  <label class="btcheck" style="background-image: url('/static/light_office_desk.png')" for="myonoffswitchi" onclick="uction()"></label>
   <input type="checkbox" name="onoffswitchi" class="onoffswitch-checkbox" id="myonoffswitchi" checked>
 </p><p style="text-align: center">
 
-  <label class="btcheck" style="background-image: url('light_floor_lamp.png')" for="myonoffswitchm" onclick="unction()"></label>
+  <label class="btcheck" style="background-image: url('/static/light_floor_lamp.png')" for="myonoffswitchm" onclick="unction()"></label>
   <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitchm" checked>
 </p><p style="text-align: center">
 
-  <label class="btcheck" style="background-image: url('light_downlight.png')" for="myonoffswitch" onclick="uncion()"></label>
+  <label class="btcheck" style="background-image: url('/static/light_downlight.png')" for="myonoffswitch" onclick="uncion()"></label>
   <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
 </p>
 
