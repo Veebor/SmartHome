@@ -13,7 +13,14 @@
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="{{ static_url("style.css") }}">
     <link rel="stylesheet" href="{{ static_url("left-nav-style.css") }}">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Per iPad Retina -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ static_url("apple-touch-icon-144x144-precomposed.png") }}">
+    <!-- Per iPhone Retina -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ static_url("apple-touch-icon-114x114-precomposed.png") }}">
+    <!-- Per iPad -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ static_url("apple-touch-icon-72x72-precomposed.png") }}">
+    <!-- Per iPhone e Android -->
+    <link rel="apple-touch-icon-precomposed" href="{{ static_url("apple-touch-icon-57x57-precomposed.png") }}">
 </head>
 
 <body>
