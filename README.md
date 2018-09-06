@@ -5,4 +5,4 @@
 
 **The NEW home-automation project.** 
 
-Server code and C++ sketches soon!
+Server code and C++ code soon!
