@@ -6,6 +6,8 @@ import base64
 import time
 import json
 
+# TODO add DB info and connection
+
 cookie_code = base64.b64encode(os.urandom(50)).decode('ascii')
 print("Cookie code: " + cookie_code)
 
@@ -61,6 +63,21 @@ class LogoutHandler(BaseHandler):
         self.write('You are logged-out')
         self.redirect("/")
 
+class SubmitInfoHandler(BaseHandler):
+    def post(self):
+        data = json.loads(self.request.body)
+        name = base64.b64decode(data['myName']).decode('utf-8')
+        password = base64.b64decode(data['myPass']).decode('utf-8')
+        email = base64.b64decode(data['myEmail']).decode('utf-8')
+        phone = base64.b64decode(data['myPhone']).decode('utf-8')
+        gender = base64.b64decode(data['myGender']).decode('utf-8')
+        date_of_birth = base64.b64decode(data['myBirthday']).decode('utf-8')
+        comments = base64.b64decode(data['myComments']).decode('utf-8')
+        
+    def get(self):
+        self.redirect("/")
+
+
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -71,7 +88,8 @@ class Application(tornado.web.Application):
             (r'/root', RootHandler),
             (r'/root1', RootHandler),
             (r'/login', LoginHandler),
-            (r'/logout', LogoutHandler)
+            (r'/logout', LogoutHandler),
+            (r'/submit', SubmitInfoHandler)
         ]
         settings = {
             "debug": True,
