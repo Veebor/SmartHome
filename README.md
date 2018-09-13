@@ -1,4 +1,4 @@
-# Smarthome
+# SmartHome
 **GUI Building** 
 
 [![Build Status](https://travis-ci.org/ClFbV/SmartHome.svg?branch=master)](https://travis-ci.org/ClFbV/SmartHome) 
