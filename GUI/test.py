@@ -1,12 +1,17 @@
-import tornado.ioloop
-import tornado.web
-import tornado.escape
+try:
+    import tornado.ioloop
+    import tornado.web
+    import tornado.escape
+except ImportError:
+    print("Install Tornado first!")
 import os
 import base64
 import time
 import json
 
 # TODO add DB info and connection
+
+# TODO Change cookie code after x days
 
 cookie_code = base64.b64encode(os.urandom(50)).decode('ascii')
 print("Cookie code: " + cookie_code)
@@ -38,8 +43,11 @@ class LoginHandler(BaseHandler):
         data = json.loads(self.request.body)
         user = base64.b64decode(data['myUser']).decode('utf-8')
         password = base64.b64decode(data['myPass']).decode('utf-8')
-        print(user)
-        print(password)
+        # print(user)
+        # print(password)
+        # When doing request we clear old cookies
+        self.clear_cookie("CookieMonster")
+        # FIXME: Fix auth with DB integration 
         if user == "Luca" and password == "ciccio":
             print(user + " gained access")
             self.set_secure_cookie("CookieMonster", 'Luca', expires_days=7)
@@ -64,6 +72,7 @@ class LogoutHandler(BaseHandler):
         self.redirect("/")
 
 class SubmitInfoHandler(BaseHandler):
+    # TODO Post request from JS
     def post(self):
         data = json.loads(self.request.body)
         name = base64.b64decode(data['myName']).decode('utf-8')
@@ -73,9 +82,22 @@ class SubmitInfoHandler(BaseHandler):
         gender = base64.b64decode(data['myGender']).decode('utf-8')
         date_of_birth = base64.b64decode(data['myBirthday']).decode('utf-8')
         comments = base64.b64decode(data['myComments']).decode('utf-8')
-        
+        print("User: " + name + " Password: " + password)
+        print("Email: " + email + " Phone: " + phone)
+        print("Gender: " + gender)
+        print("Date of birth: " + date_of_birth)
+        print("Comments: " + comments)
+
+    # TODO Manage accounts page in HTML
     def get(self):
-        self.redirect("/")
+        if self.current_user == "Luca" or self.current_user == "Fede":
+            self.write("Manage accounts")
+            time.sleep(1)
+            self.render("/static/accounts.html")
+        else:
+            self.write("Forbidden! You have not the rights to access this page!")
+            time.sleep(2)
+            self.redirect("/")
 
 
 class LightsHandler(BaseHandler):
@@ -145,6 +167,7 @@ print("OK")
 print("Build suceded!")
 
 try:
+    # TODO Update certs before production
     http_server = tornado.httpserver.HTTPServer(Application(),
                                                 #ssl_options={
                                                 #"certfile": "/cert.pem",

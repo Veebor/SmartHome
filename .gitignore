@@ -1,7 +1,4 @@
-
-GUI/psswd.js
 .idea
 Smarthome.iml
-.debris/tmp
-.vscode/settings.json
-.vscode/launch.json
+.debris
+.vscode
