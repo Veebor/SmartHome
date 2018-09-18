@@ -23,13 +23,12 @@ class BaseHandler(tornado.web.RequestHandler):
             return self.get_secure_cookie('CookieMonster').decode('ascii')
 
 
-
 class MainHandler(BaseHandler):
     def get(self):
         if self.current_user:
             self.redirect("/root")
         else:
-          self.render("index.html", title="Smarthome")
+            self.render("index.html", title="Smarthome")
 
 
 class RootHandler(BaseHandler):
@@ -47,7 +46,7 @@ class LoginHandler(BaseHandler):
         # print(password)
         # When doing request we clear old cookies
         self.clear_cookie("CookieMonster")
-        # FIXME: Fix auth with DB integration 
+        # FIXME: Fix auth with DB integration
         if user == "Luca" and password == "ciccio":
             print(user + " gained access")
             self.set_secure_cookie("CookieMonster", 'Luca', expires_days=7)
@@ -70,6 +69,7 @@ class LogoutHandler(BaseHandler):
         self.clear_cookie("CookieMonster")
         self.write('You are logged-out')
         self.redirect("/")
+
 
 class SubmitInfoHandler(BaseHandler):
     # TODO Post request from JS
@@ -95,7 +95,8 @@ class SubmitInfoHandler(BaseHandler):
             time.sleep(1)
             self.render("/static/accounts.html")
         else:
-            self.write("Forbidden! You have not the rights to access this page!")
+            self.write("Forbidden! You have not the rights \
+                    to access this page!")
             time.sleep(2)
             self.redirect("/")
 
@@ -169,12 +170,11 @@ print("Build suceded!")
 try:
     # TODO Update certs before production
     http_server = tornado.httpserver.HTTPServer(Application(),
-                                                #ssl_options={
-                                                #"certfile": "/cert.pem",
-                                                #"keyfile": "/privkey.pem",
-                                                #})
+                                                # ssl_options={
+                                                # "certfile": "/cert.pem",
+                                                # "keyfile": "/privkey.pem",
+                                                # })
                                                 )
-                                              
     http_server.listen(8080)
     tornado.ioloop.IOLoop.instance().start()
 except KeyboardInterrupt:
