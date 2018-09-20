@@ -8,13 +8,71 @@ import os
 import base64
 import time
 import json
-
-# TODO add DB info and connection
+import psycopg2
+import hashlib
 
 # TODO Change cookie code after x days
 
 cookie_code = base64.b64encode(os.urandom(50)).decode('ascii')
 print("Cookie code: " + cookie_code)
+
+
+def chomp(string1):
+    string1 = string1.replace("\r", "")
+    string1 = string1.replace("\n", "")
+    return string1
+
+# READ DBINFO FROM FILE
+
+dirname = os.path.dirname(__file__)
+
+# FILE database.txt IS NEEDED TO RUN THIS PROGRAM
+
+# FOR INFO ABOUT database FILE CONTACT CFV
+
+filename = os.path.join(dirname, 'database.txt')
+
+f = open(filename, "r")
+
+database_data = f.readlines()
+
+dbhost = chomp(database_data[0])
+user_database = chomp(database_data[1])
+dbuser = chomp(database_data[2])
+dbpassword = chomp(database_data[3])
+
+
+class Database():
+    def __init__(self):
+        self.conn = None
+        try:
+            # CONNECT
+            print("CONNECTING...")
+            self.conn = psycopg2.connect(host=dbhost, database=user_database,
+                                         user=dbuser, password=dbpassword)
+            print("CONNECTED...")
+            # CREATE A CURSOR
+            self.cur = self.conn.cursor()
+            # FIND ALL DATA
+            self.cur.execute("SELECT * FROM data")
+            self.rows = self.cur.fetchall()
+        except Exception as database_error:
+            print(database_error)
+
+    def show_data(self):
+        return self.rows
+
+    def user_id(self):
+        return [x[0] for x in self.rows]
+
+    def show_users(self):
+        return [x[1] for x in self.rows]
+
+    def show_passwords(self):
+        return [x[2] for x in self.rows]
+    
+    def close_connection(self):
+        self.conn.close()
 
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -39,25 +97,35 @@ class RootHandler(BaseHandler):
 
 class LoginHandler(BaseHandler):
     def post(self):
+        db = Database()
         data = json.loads(self.request.body)
         user = base64.b64decode(data['myUser']).decode('utf-8')
         password = base64.b64decode(data['myPass']).decode('utf-8')
+        user_sha256 = hashlib.sha256(user.encode()).hexdigest()
+        password_sha256 = hashlib.sha256(password.encode()).hexdigest()
         # print(user)
         # print(password)
         # When doing request we clear old cookies
         self.clear_cookie("CookieMonster")
-        # FIXME: Fix auth with DB integration
-        if user == "Luca" and password == "ciccio":
-            print(user + " gained access")
-            self.set_secure_cookie("CookieMonster", 'Luca', expires_days=7)
-            # self.redirect("/root", status=302)
-        elif user == "Fede" and password == "pippo":
-            print(user + " gained access")
-            self.set_secure_cookie("CookieMonster", 'Fede', expires_days=7)
-            # self.redirect("/root1", status=302)
+        if user_sha256 in db.show_users():
+            index = 0
+            for tup in db.show_users():
+                if user_sha256 in tup:
+                    pos = index
+                else:
+                    index += 1
+            if password_sha256 == db.show_passwords()[pos]:
+                # print(user + " gained access")
+                self.set_secure_cookie("CookieMonster", user, expires_days=7)
+            else:
+                self.write("Wrong username or password")
+                self.write("403 Forbidden")
+                time.sleep(2)
         else:
-            print("Wrong password")
+            self.write("Wrong username or password")
             self.write('403 Forbidden')
+            time.sleep(2)
+        db.close_connection()
 
     def get(self):
         self.redirect("/")

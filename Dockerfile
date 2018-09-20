@@ -8,6 +8,8 @@ ADD privkey.pem privkey.pem
 
 RUN pip install tornado
 
+RUN pip install psycopg2
+
 EXPOSE 8080
 
 CMD ["python", "/gui/test.py"]
