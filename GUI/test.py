@@ -4,6 +4,7 @@ try:
     import tornado.escape
 except ImportError:
     print("Install Tornado first!")
+    exit(0)
 import os
 import base64
 import time
@@ -30,16 +31,22 @@ dirname = os.path.dirname(__file__)
 
 # FOR INFO ABOUT database FILE CONTACT CFV
 
-filename = os.path.join(dirname, 'database.txt')
+try:
+    filename = os.path.join(dirname, 'database.txt')
 
-f = open(filename, "r")
+    f = open(filename, "r")
 
-database_data = f.readlines()
+    database_data = f.readlines()
 
-dbhost = chomp(database_data[0])
-user_database = chomp(database_data[1])
-dbuser = chomp(database_data[2])
-dbpassword = chomp(database_data[3])
+    dbhost = chomp(database_data[0])
+    user_database = chomp(database_data[1])
+    dbuser = chomp(database_data[2])
+    dbpassword = chomp(database_data[3])
+
+except Exception as file_error:
+    print('File not found')
+    print(file_error)
+    exit(0)
 
 
 class Database():
@@ -70,7 +77,16 @@ class Database():
 
     def show_passwords(self):
         return [x[2] for x in self.rows]
-    
+
+    # FIXME: DB add not working. psycopg2.ProgrammingError: SYNTAX ERROR
+    # def add_data(self, username_to_ins, password_to_ins):
+    #     # INSERT DATA INTO TABLE
+    #     self.cur.execute("INSERT INTO data(users, passwords, admin) VALUES({}, {}, 'FALSE')"
+    #                      .format(str(hashlib.sha256(username_to_ins.encode())
+    #                              .hexdigest()),
+    #                              str(hashlib.sha256(password_to_ins.encode())
+    #                              .hexdigest())))
+
     def close_connection(self):
         self.conn.close()
 
