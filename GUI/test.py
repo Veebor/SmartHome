@@ -42,11 +42,12 @@ try:
     user_database = chomp(database_data[1])
     dbuser = chomp(database_data[2])
     dbpassword = chomp(database_data[3])
+    db_working = 1
 
 except Exception as file_error:
     print('File not found')
     print(file_error)
-    exit(0)
+    db_working = 0
 
 
 class Database():
@@ -113,7 +114,13 @@ class RootHandler(BaseHandler):
 
 class LoginHandler(BaseHandler):
     def post(self):
-        db = Database()
+        if db_working:
+            db = Database()
+            db_users = db.show_users()
+            db_passwords = db.show_passwords()
+        else:
+            db_users = ['test']
+            db_passwords = ['test']
         data = json.loads(self.request.body)
         user = base64.b64decode(data['myUser']).decode('utf-8')
         password = base64.b64decode(data['myPass']).decode('utf-8')
@@ -123,14 +130,14 @@ class LoginHandler(BaseHandler):
         # print(password)
         # When doing request we clear old cookies
         self.clear_cookie("CookieMonster")
-        if user_sha256 in db.show_users():
+        if user_sha256 in db_users:
             index = 0
-            for tup in db.show_users():
+            for tup in db_users:
                 if user_sha256 in tup:
                     pos = index
                 else:
                     index += 1
-            if password_sha256 == db.show_passwords()[pos]:
+            if password_sha256 == db_passwords[pos]:
                 # print(user + " gained access")
                 self.set_secure_cookie("CookieMonster", user, expires_days=7)
             else:
