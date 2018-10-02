@@ -276,10 +276,11 @@ print("Build suceded!")
 try:
     # TODO Update certs before production
     http_server = tornado.httpserver.HTTPServer(Application(),
-                                                ssl_options={
-                                                "certfile": "/cert.pem",
-                                                "keyfile": "/privkey.pem",
-                                                })
+                                                # ssl_options={
+                                                # "certfile": "/cert.pem",
+                                                # "keyfile": "/privkey.pem",
+                                                # })
+                                                )
     http_server.listen(8080)
     tornado.ioloop.IOLoop.instance().start()
 except KeyboardInterrupt:
