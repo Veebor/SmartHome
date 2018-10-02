@@ -17,6 +17,8 @@ import hashlib
 cookie_code = base64.b64encode(os.urandom(50)).decode('ascii')
 print("Cookie code: " + cookie_code)
 
+user_accepted = False
+
 
 def chomp(string1):
     string1 = string1.replace("\r", "")
@@ -58,12 +60,14 @@ class Database():
             print("CONNECTING...")
             self.conn = psycopg2.connect(host=dbhost, database=user_database,
                                          user=dbuser, password=dbpassword)
+            self.conn.autocommit = True
             print("CONNECTED...")
             # CREATE A CURSOR
             self.cur = self.conn.cursor()
             # FIND ALL DATA
             self.cur.execute("SELECT * FROM data")
             self.rows = self.cur.fetchall()
+            # self.cur.commit()
         except Exception as database_error:
             print(database_error)
 
@@ -71,22 +75,25 @@ class Database():
         return self.rows
 
     def user_id(self):
-        return [x[0] for x in self.rows]
+        return [x[3] for x in self.rows]
 
     def show_users(self):
-        return [x[1] for x in self.rows]
+        return [x[0] for x in self.rows]
 
     def show_passwords(self):
-        return [x[2] for x in self.rows]
+        return [x[1] for x in self.rows]
 
-    # FIXME: DB add not working. psycopg2.ProgrammingError: SYNTAX ERROR
-    # def add_data(self, username_to_ins, password_to_ins):
-    #     # INSERT DATA INTO TABLE
-    #     self.cur.execute("INSERT INTO data(users, passwords, admin) VALUES({}, {}, 'FALSE')"
-    #                      .format(str(hashlib.sha256(username_to_ins.encode())
-    #                              .hexdigest()),
-    #                              str(hashlib.sha256(password_to_ins.encode())
-    #                              .hexdigest())))
+    def add_data(self, username_to_ins, password_to_ins):
+        # INSERT DATA INTO TABLE
+        try:
+            self.cur.execute("INSERT INTO data(users, passwords, admin) VALUES(%s, %s, 'FALSE')",
+                             (hashlib.sha256(username_to_ins.encode())
+                              .hexdigest(),
+                              hashlib.sha256(password_to_ins.encode())
+                              .hexdigest()))
+        except Exception as database_insert_error:
+            print(database_insert_error)
+            self.cur.rollback()
 
     def close_connection(self):
         self.conn.close()
@@ -178,6 +185,14 @@ class SubmitInfoHandler(BaseHandler):
         print("Gender: " + gender)
         print("Date of birth: " + date_of_birth)
         print("Comments: " + comments)
+        if user_accepted:
+            if db_working:
+                db = Database()
+                db.add_data(name, password)
+            else:
+                self.write("DB not working. Retry later")
+        else:
+            print("User not accepted yet")
 
     # TODO Manage accounts page in HTML
     def get(self):
@@ -261,11 +276,10 @@ print("Build suceded!")
 try:
     # TODO Update certs before production
     http_server = tornado.httpserver.HTTPServer(Application(),
-                                                # ssl_options={
-                                                # "certfile": "/cert.pem",
-                                                # "keyfile": "/privkey.pem",
-                                                # })
-                                                )
+                                                ssl_options={
+                                                "certfile": "/cert.pem",
+                                                "keyfile": "/privkey.pem",
+                                                })
     http_server.listen(8080)
     tornado.ioloop.IOLoop.instance().start()
 except KeyboardInterrupt:
