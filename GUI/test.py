@@ -126,8 +126,8 @@ class LoginHandler(BaseHandler):
             db_users = db.show_users()
             db_passwords = db.show_passwords()
         else:
-            db_users = ['test']
-            db_passwords = ['test']
+            db_users = ['9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08']
+            db_passwords = ['9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08']
         data = json.loads(self.request.body)
         user = base64.b64decode(data['myUser']).decode('utf-8')
         password = base64.b64decode(data['myPass']).decode('utf-8')
@@ -155,7 +155,8 @@ class LoginHandler(BaseHandler):
             self.write("Wrong username or password")
             self.write('403 Forbidden')
             time.sleep(2)
-        db.close_connection()
+        if db_working:
+            db.close_connection()
 
     def get(self):
         self.redirect("/")
