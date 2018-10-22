@@ -1,9 +1,9 @@
 # SmartHome
 **GUI Building** 
 
-Travis testing!
 
-[![Build Status](https://travis-ci.org/ClFbV/SmartHome.svg?branch=master)](https://travis-ci.org/ClFbV/SmartHome) 
+
+[![Build Status](https://travis-ci.org/VeeBor/SmartHome.svg?branch=master)](https://travis-ci.org/VeeBor/SmartHome) 
 
 **JS Standard Style**
 
