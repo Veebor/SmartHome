@@ -19,6 +19,8 @@ print("Cookie code: " + cookie_code)
 
 user_accepted = False
 
+global db_working
+
 
 def chomp(string1):
     string1 = string1.replace("\r", "")
@@ -59,9 +61,12 @@ class Database():
             # CONNECT
             print("CONNECTING...")
             self.conn = psycopg2.connect(host=dbhost, database=user_database,
-                                         user=dbuser, password=dbpassword)
+                                         user=dbuser, password=dbpassword,
+                                         connect_timeout=5)
             self.conn.autocommit = True
             print("CONNECTED...")
+            global db_working
+            db_working = 1
             # CREATE A CURSOR
             self.cur = self.conn.cursor()
             # FIND ALL DATA
@@ -69,6 +74,7 @@ class Database():
             self.rows = self.cur.fetchall()
             # self.cur.commit()
         except Exception as database_error:
+            db_working = 0
             print(database_error)
 
     def show_data(self):
@@ -78,10 +84,16 @@ class Database():
         return [x[3] for x in self.rows]
 
     def show_users(self):
-        return [x[0] for x in self.rows]
+        try:
+            return [x[0] for x in self.rows]
+        except:
+            return 500
 
     def show_passwords(self):
-        return [x[1] for x in self.rows]
+        try:
+            return [x[1] for x in self.rows]
+        except:
+            return 500
 
     def add_data(self, username_to_ins, password_to_ins):
         # INSERT DATA INTO TABLE
@@ -121,42 +133,52 @@ class RootHandler(BaseHandler):
 
 class LoginHandler(BaseHandler):
     def post(self):
-        if db_working:
-            db = Database()
-            db_users = db.show_users()
-            db_passwords = db.show_passwords()
-        else:
-            db_users = ['9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08']
-            db_passwords = ['9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08']
-        data = json.loads(self.request.body)
-        user = base64.b64decode(data['myUser']).decode('utf-8')
-        password = base64.b64decode(data['myPass']).decode('utf-8')
-        user_sha256 = hashlib.sha256(user.encode()).hexdigest()
-        password_sha256 = hashlib.sha256(password.encode()).hexdigest()
-        # print(user)
-        # print(password)
-        # When doing request we clear old cookies
-        self.clear_cookie("CookieMonster")
-        if user_sha256 in db_users:
-            index = 0
-            for tup in db_users:
-                if user_sha256 in tup:
-                    pos = index
+        try:
+            global db_working
+            if db_working:
+                db = Database()
+                db_users = db.show_users()
+                db_passwords = db.show_passwords()
+                if db_users == 500 or db_passwords == 500:
+                    db_users = ['9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08']
+                    db_passwords = ['9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08']
+                    db_working = 0
                 else:
-                    index += 1
-            if password_sha256 == db_passwords[pos]:
-                # print(user + " gained access")
-                self.set_secure_cookie("CookieMonster", user, expires_days=7)
+                    print('OK')
+            else:
+                db_users = ['9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08']
+                db_passwords = ['9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08']
+            data = json.loads(self.request.body)
+            user = base64.b64decode(data['myUser']).decode('utf-8')
+            password = base64.b64decode(data['myPass']).decode('utf-8')
+            user_sha256 = hashlib.sha256(user.encode()).hexdigest()
+            password_sha256 = hashlib.sha256(password.encode()).hexdigest()
+            # print(user)
+            # print(password)
+            # When doing request we clear old cookies
+            self.clear_cookie("CookieMonster")
+            if user_sha256 in db_users:
+                index = 0
+                for tup in db_users:
+                    if user_sha256 in tup:
+                        pos = index
+                    else:
+                        index += 1
+                if password_sha256 == db_passwords[pos]:
+                    # print(user + " gained access")
+                    self.set_secure_cookie("CookieMonster", user, expires_days=7)
+                else:
+                    self.write("Wrong username or password")
+                    self.write("403 Forbidden")
+                    time.sleep(2)
             else:
                 self.write("Wrong username or password")
-                self.write("403 Forbidden")
+                self.write('403 Forbidden')
                 time.sleep(2)
-        else:
-            self.write("Wrong username or password")
-            self.write('403 Forbidden')
-            time.sleep(2)
-        if db_working:
-            db.close_connection()
+            if db_working:
+                db.close_connection()
+        except Exception as login_error:
+            print(login_error)
 
     def get(self):
         self.redirect("/")
