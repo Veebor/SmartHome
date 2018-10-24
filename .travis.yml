@@ -15,7 +15,7 @@ script:
   - curl localhost:8080
   - sleep 5
   - docker rm $(docker stop $(docker ps -a -q --filter ancestor=smarthome_gui --format="{{.ID}}"))
-  - python ./ServerAPI.py
+  - timeout 15s python ./ServerAPI.py &
   - sleep 5
   - curl localhost:3000
 
