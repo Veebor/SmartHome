@@ -14,16 +14,17 @@ class MainHandler(tornado.web.RequestHandler):
 
 
 class LoginHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.req_path = self.request.path
-        self.write(self.req_path)
-        req_array = self.req_path.split('/')
-        print(req_array)
-        self.user = req_array[2]
-        self.password = req_array[3]
-        print('User: ' + self.user + ' Password: ' + self.password)
+    def get(self, user_sha256=None, password_sha256=None):
+        self.user = user_sha256
+        self.password = password_sha256
         # TODO: Check in DB
-        # TODO: return special code to login
+        logged_in = True
+        print('User: ' + self.user + ' Password: ' + self.password)
+        if logged_in:
+            token = 'Something random'
+            response = {'status': 'OK',
+                        'token': token}
+            self.write(response)
 
 
 class Application(tornado.web.Application):
@@ -32,7 +33,7 @@ class Application(tornado.web.Application):
             (r'/', MainHandler),
             # (r'/home', HomeHandler),
             # (r'/userdata', UserHandler),
-            (r"/login/.*/.*", LoginHandler)
+            (r"/login/(.*)/(.*)", LoginHandler)
         ]
         tornado.web.Application.__init__(self, handlers)  # **settings
 
