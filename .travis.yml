@@ -8,14 +8,17 @@ services:
   - docker
 before_install:
   - docker build -t smarthome_gui .
-install: "pip install tornado"
+install: 
+  - "pip install tornado"
+  - "pip install requests"
 script:
   - docker run -i -t -d -p 8080:8080 smarthome_gui
   - sleep 5
   - curl localhost:8080
   - sleep 5
   - docker rm $(docker stop $(docker ps -a -q --filter ancestor=smarthome_gui --format="{{.ID}}"))
-  - timeout 15s python ./ServerAPI.py &
+  - timeout 15s python ./API/ServerAPI.py &
   - sleep 5
   - curl localhost:3000
+  - python ./Test/testAPI.py
 
