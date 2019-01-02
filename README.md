@@ -11,4 +11,4 @@
 
 **The NEW home-automation project.** 
 
-Project docs and real-word case study soon
+Project currently discontinued!
