@@ -304,7 +304,7 @@ try:
                                                 # "keyfile": "/privkey.pem",
                                                 # })
                                                 )
-    http_server.listen(8080)
+    http_server.listen(80)
     tornado.ioloop.IOLoop.instance().start()
 except KeyboardInterrupt:
     print("\nClosing...")
