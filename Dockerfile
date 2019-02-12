@@ -10,6 +10,4 @@ RUN pip install tornado
 
 RUN pip install psycopg2
 
-EXPOSE 80
-
 CMD ["python", "/gui/test.py"]
