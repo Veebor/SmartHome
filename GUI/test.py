@@ -31,27 +31,8 @@ def chomp(string1):
 
 dirname = os.path.dirname(__file__)
 
-# FILE database.txt IS NEEDED TO RUN THIS PROGRAM
-
-# FOR INFO ABOUT database FILE CONTACT CFV
-
-try:
-    filename = os.path.join(dirname, 'database.txt')
-
-    f = open(filename, "r")
-
-    database_data = f.readlines()
-
-    dbhost = chomp(database_data[0])
-    user_database = chomp(database_data[1])
-    dbuser = chomp(database_data[2])
-    dbpassword = chomp(database_data[3])
-    db_working = 1
-
-except Exception as file_error:
-    print('File not found')
-    print(file_error)
-    db_working = 0
+DATABASE_URL = os.environ['DATABASE_URL']
+db_working = 1
 
 
 class Database():
@@ -60,9 +41,7 @@ class Database():
         try:
             # CONNECT
             print("CONNECTING...")
-            self.conn = psycopg2.connect(host=dbhost, database=user_database,
-                                         user=dbuser, password=dbpassword,
-                                         connect_timeout=5)
+            self.conn = psycopg2.connect(DATABASE_URL, sslmode='require')
             self.conn.autocommit = True
             print("CONNECTED...")
             global db_working
@@ -70,7 +49,7 @@ class Database():
             # CREATE A CURSOR
             self.cur = self.conn.cursor()
             # FIND ALL DATA
-            self.cur.execute("SELECT * FROM data")
+            self.cur.execute("SELECT * FROM users")
             self.rows = self.cur.fetchall()
             # self.cur.commit()
         except Exception as database_error:
@@ -81,24 +60,24 @@ class Database():
         return self.rows
 
     def user_id(self):
-        return [x[3] for x in self.rows]
+        return [x[0] for x in self.rows]
 
     def show_users(self):
         try:
-            return [x[0] for x in self.rows]
+            return [x[1] for x in self.rows]
         except:
             return 500
 
     def show_passwords(self):
         try:
-            return [x[1] for x in self.rows]
+            return [x[2] for x in self.rows]
         except:
             return 500
 
     def add_data(self, username_to_ins, password_to_ins):
         # INSERT DATA INTO TABLE
         try:
-            self.cur.execute("INSERT INTO data(users, passwords, admin) VALUES(%s, %s, 'FALSE')",
+            self.cur.execute("INSERT INTO users(users, passwords, admin) VALUES(%s, %s, 'FALSE')",
                              (hashlib.sha256(username_to_ins.encode())
                               .hexdigest(),
                               hashlib.sha256(password_to_ins.encode())
