@@ -32,7 +32,10 @@ def chomp(string1):
 dirname = os.path.dirname(__file__)
 
 DATABASE_URL = os.environ['DATABASE_URL']
-db_working = 1
+if not DATABASE_URL:
+    db_working = 0
+else:
+    db_working = 1
 
 
 class Database():
@@ -284,6 +287,8 @@ try:
                                                 # })
                                                 )
     PORT = int(os.environ['PORT'])
+    if not PORT:
+        PORT = 8080
     http_server.listen(PORT)
     tornado.ioloop.IOLoop.instance().start()
 except KeyboardInterrupt:
