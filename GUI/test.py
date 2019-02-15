@@ -31,11 +31,11 @@ def chomp(string1):
 
 dirname = os.path.dirname(__file__)
 
-DATABASE_URL = os.environ['DATABASE_URL']
-if not DATABASE_URL:
-    db_working = 0
-else:
+try:
+    DATABASE_URL = os.environ['DATABASE_URL']
     db_working = 1
+except:
+    db_working = 0
 
 
 class Database():
@@ -286,8 +286,9 @@ try:
                                                 # "keyfile": "/privkey.pem",
                                                 # })
                                                 )
-    PORT = int(os.environ['PORT'])
-    if not PORT:
+    try:
+        PORT = int(os.environ['PORT'])
+    except:
         PORT = 8080
     http_server.listen(PORT)
     tornado.ioloop.IOLoop.instance().start()
