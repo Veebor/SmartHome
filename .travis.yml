@@ -4,6 +4,8 @@ python:
   - "3.6"
 os: 
   - linux
+env:
+  - PORT=8080 
 services:
   - docker
 before_install:
