@@ -11,4 +11,12 @@
 
 **The NEW home-automation project.** 
 
-Project currently discontinued!
+## DEMO
+
+Demo available at [SmartHome DEMO](https://smarthome.veebor.tk)
+
+
+Username: `demo`
+
+
+Password: `demo`
