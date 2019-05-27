@@ -3,273 +3,280 @@
 <html lang="it" xmlns="http://www.w3.org/1999/html">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SmartHOME by ClFbV</title>
-    <meta name="author" content="ClFbV" />
-    <meta name="description" content="SmartHOME" />
+    <title>SmartHome by Veebor</title>
+    <meta name="author" content="Veebor" />
+    <meta name="description" content="SmartHome" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="{{ static_url("style.css") }}">
     <link rel="stylesheet" href="{{ static_url("left-nav-style.css") }}">
     <!-- Per iPad Retina -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ static_url("apple-touch-icon-144x144-precomposed.png") }}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="{{ static_url("apple-touch-icon-144x144-precomposed.png") }}">
     <!-- Per iPhone Retina -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ static_url("apple-touch-icon-114x114-precomposed.png") }}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="{{ static_url("apple-touch-icon-114x114-precomposed.png") }}">
     <!-- Per iPad -->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ static_url("apple-touch-icon-72x72-precomposed.png") }}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="{{ static_url("apple-touch-icon-72x72-precomposed.png") }}">
     <!-- Per iPhone e Android -->
     <link rel="apple-touch-icon-precomposed" href="{{ static_url("apple-touch-icon-57x57-precomposed.png") }}">
 </head>
 
 <body>
-<p style="text-align: right">
-    <a href="https://time.is/Chieri" id="time_is_link" rel="nofollow" style="font-size:26px"></a>
-    <span id="Chieri_z723" style="font-size:26px"></span>
-    <script src="//widget.time.is/it.js"></script>
-    <script>
-        time_is_widget.init({Chieri_z723:{template:"TIME", time_format:"12hours:minutesAMPM",  coords:"45.0105400,7.8213300"}});
-    </script>
+    <p style="text-align: right">
+        <a href="https://time.is/Chieri" id="time_is_link" rel="nofollow" style="font-size:26px"></a>
+        <span id="Chieri_z723" style="font-size:26px"></span>
+        <script src="//widget.time.is/it.js"></script>
+        <script>
+            time_is_widget.init({ Chieri_z723: { template: "TIME", time_format: "12hours:minutesAMPM", coords: "45.0105400,7.8213300" } });
+        </script>
 
-</p>
+    </p>
 
-<input type="checkbox" id="nav-toggle" hidden>
+    <input type="checkbox" id="nav-toggle" hidden>
 
-<nav class="nav">
-    <label for="nav-toggle" class="nav-toggle" onclick></label>
+    <nav class="nav">
+        <label for="nav-toggle" class="nav-toggle" onclick></label>
 
-    <h2 class="logo">
-        <a href="https://clfbv.cf">ClFbV.cf</a>
-    </h2>
-	<div class="block block-strong no-padding">
-  	<div id="demo-calendar-inline-container"></div>
-	</div>
+        <h2 class="logo">
+            <a href="https://veebor.tk">Veebor</a>
+        </h2>
+        <div class="block block-strong no-padding">
+            <div id="demo-calendar-inline-container"></div>
+        </div>
 
-  <p style="text-align: left">
-
-
-      <div style="text-align: left" class="list inline-labels no-hairlines-md">
-          <ul>
-              <li class="item-content item-input">
-                  <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                  </div>
-                  <div class="item-inner">
-                      <div class="item-title item-label">Name</div>
-                      <div class="item-input-wrap">
-                          <input type="text" placeholder="Your name">
-                          <span class="input-clear-button"></span>
-                      </div>
-                  </div>
-              </li>
-              <li class="item-content item-input">
-                  <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                  </div>
-                  <div class="item-inner">
-                      <div class="item-title item-label">Password</div>
-                      <div class="item-input-wrap">
-                          <input type="password" placeholder="Your password">
-                          <span class="input-clear-button"></span>
-                      </div>
-                  </div>
-                  <div class="item-inner">
-                      <div class="item-title item-label">Conferma Password</div>
-                      <div class="item-input-wrap">
-                          <input type="password" placeholder="Your password">
-                          <span class="input-clear-button"></span>
-                      </div>
-                  </div>
-              </li>
-              <li class="item-content item-input">
-                  <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                  </div>
-                  <div class="item-inner">
-                      <div class="item-title item-label">E-mail</div>
-                      <div class="item-input-wrap">
-                          <input type="email" placeholder="Your e-mail">
-                          <span class="input-clear-button"></span>
-                      </div>
-                  </div>
-              </li>
-              <li class="item-content item-input">
-                  <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                  </div>
-                </li>
-              <li class="item-content item-input">
-                  <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                  </div>
-                  <div class="item-inner">
-                      <div class="item-title item-label">Phone</div>
-                      <div class="item-input-wrap">
-                          <input type="tel" placeholder="Your phone number">
-                          <span class="input-clear-button"></span>
-                      </div>
-                  </div>
-              </li>
-              <li class="item-content item-input">
-                  <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                  </div>
-                  <div style="text-align: left" class="item-inner">
-                      <div class="item-title item-label">Gender</div>
-                      <div class="item-input-wrap">
-                          <select placeholder="Please choose...">
-                              <option value="Male">Male</option>
-                              <option value="Female">Female</option>
-                          </select>
-                      </div>
-                  </div>
-              </li>
-              <li class="item-content item-input">
-                  <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                  </div>
-                  <div class="item-inner">
-                      <div class="item-title item-label">Date of birth</div>
-                      <div class="item-input-wrap">
-                          <input type="date" value="1970-01-01"  placeholder="Please choose...">
-                      </div>
-                  </div>
-              </li>
-              <li class="item-content item-input">
-                  <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                  </div>
-                  <div class="item-inner">
-              </li>
-              <li class="item-content item-input">
-                  <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                      <p style="text-align: left"> Comment</p>
-                        <textarea placeholder="Any question"></textarea>
-                  </div>
-              </li>
-          </ul>
-      </div>
-        <button class"bt-check" type="submit" onclick="myTornado()">Submit</button>
-  </p>
+        <p style="text-align: left">
 
 
+            <div style="text-align: left" class="list inline-labels no-hairlines-md">
+                <ul>
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon demo-list-icon"></i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-label">Name</div>
+                            <div class="item-input-wrap">
+                                <input type="text" placeholder="Your name">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon demo-list-icon"></i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-label">Password</div>
+                            <div class="item-input-wrap">
+                                <input type="password" placeholder="Your password">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-label">Conferma Password</div>
+                            <div class="item-input-wrap">
+                                <input type="password" placeholder="Your password">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon demo-list-icon"></i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-label">E-mail</div>
+                            <div class="item-input-wrap">
+                                <input type="email" placeholder="Your e-mail">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon demo-list-icon"></i>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon demo-list-icon"></i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-label">Phone</div>
+                            <div class="item-input-wrap">
+                                <input type="tel" placeholder="Your phone number">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon demo-list-icon"></i>
+                        </div>
+                        <div style="text-align: left" class="item-inner">
+                            <div class="item-title item-label">Gender</div>
+                            <div class="item-input-wrap">
+                                <select placeholder="Please choose...">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon demo-list-icon"></i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title item-label">Date of birth</div>
+                            <div class="item-input-wrap">
+                                <input type="date" value="1970-01-01" placeholder="Please choose...">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon demo-list-icon"></i>
+                        </div>
+                        <div class="item-inner">
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-media">
+                            <i class="icon demo-list-icon"></i>
+                            <p style="text-align: left"> Comment</p>
+                            <textarea placeholder="Any question"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <button class"bt-check" type="submit" onclick="myTornado()">Submit</button>
+        </p>
 
 
 
-</nav>
-
-<main role="main">
-    <article>
-        <header>
-            <h1 class="header__title">ClFbV</h1>
-            <h2>SmartHOME</h2>
-        </header>
-        <section>
-            <p style="text-align: center;">
-                <style>
-                    body {font-family: Arial, Helvetica, sans-serif;}
-                    form {border: 3px solid #f1f1f1;}
-
-                    input[type=text], input[type=password] {
-                        width: 100%;
-                        padding: 12px 20px;
-                        margin: 8px 0;
-                        display: inline-block;
-                        border: 1px solid #ccc;
-                        box-sizing: border-box;
-                    }
-
-                    button {
-                        background-color: #4CAF50;
-                        color: white;
-                        padding: 14px 20px;
-                        margin: 8px 0;
-                        border: none;
-                        cursor: pointer;
-                        width: 100%;
-                    }
-
-                    button:hover {
-                        opacity: 0.8;
-                    }
 
 
+    </nav>
 
-                    .imgcontainer {
-                        text-align: center;
-                        margin: 24px 0 12px 0;
-                    }
-
-                    img.avatar {
-                        width: 20%;
-			height: auto;
-                    }
-
-                    .container {
-                        padding: 16px;
-                    }
-
-                    span.psw {
-                        float: right;
-                        padding-top: 16px;
-                    }
-
-                    /* Change styles for span and cancel button on extra small screens */
-                    @media screen and (max-width: 300px) {
-                        span.psw {
-                            display: block;
-                            float: none;
+    <main role="main">
+        <article>
+            <header>
+                <h1 class="header__title">ClFbV</h1>
+                <h2>SmartHOME</h2>
+            </header>
+            <section>
+                <p style="text-align: center;">
+                    <style>
+                        body {
+                            font-family: Arial, Helvetica, sans-serif;
                         }
 
-                    }
-                </style>
+                        form {
+                            border: 3px solid #f1f1f1;
+                        }
 
+                        input[type=text],
+                        input[type=password] {
+                            width: 100%;
+                            padding: 12px 20px;
+                            margin: 8px 0;
+                            display: inline-block;
+                            border: 1px solid #ccc;
+                            box-sizing: border-box;
+                        }
 
-               <img  class="imgcontainer" src="/static/img_avatar.png" width="200" height="200" alt="Avatar">
+                        button {
+                            background-color: #4CAF50;
+                            color: white;
+                            padding: 14px 20px;
+                            margin: 8px 0;
+                            border: none;
+                            cursor: pointer;
+                            width: 100%;
+                        }
 
-            </label>
-            <div class="container">
-
-                <input type="text" placeholder="Enter Username" id="uname">
-
-                <input type="password" placeholder="Enter Password" id="psw">
-
-                <button type="submit" onclick="myTornado()">Login</button>
-                <label>
-                </label>
-            </div>
-
-
-
-
-
-
-
-            <p id="demo"></p>
-
-            <script>
-                function myTornado() {
-                    var uname = document.getElementById('uname').value;
-                    var psw = document.getElementById('psw').value;
-                    var url = "/login";
-                    var unameb64 = btoa(uname);
-                    var pswb64 = btoa(psw);
-                    var params = {"myUser" : unameb64, "myPass" : pswb64};
-                    var tosend = JSON.stringify(params);
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("POST", url);
-                    xhr.send(tosend);
-		setTimeout(myloc, 2000)
-                }
-	function myloc() {
-     		window.location.assign("/root")
-		}
-func          </script>
+                        button:hover {
+                            opacity: 0.8;
+                        }
 
 
 
+                        .imgcontainer {
+                            text-align: center;
+                            margin: 24px 0 12px 0;
+                        }
+
+                        img.avatar {
+                            width: 20%;
+                            height: auto;
+                        }
+
+                        .container {
+                            padding: 16px;
+                        }
+
+                        span.psw {
+                            float: right;
+                            padding-top: 16px;
+                        }
+
+                        /* Change styles for span and cancel button on extra small screens */
+                        @media screen and (max-width: 300px) {
+                            span.psw {
+                                display: block;
+                                float: none;
+                            }
+
+                        }
+                    </style>
+
+
+                    <img class="imgcontainer" src="/static/img_avatar.png" width="200" height="200" alt="Avatar">
+
+                    </label>
+                    <div class="container">
+
+                        <input type="text" placeholder="Enter Username" id="uname">
+
+                        <input type="password" placeholder="Enter Password" id="psw">
+
+                        <button type="submit" onclick="myTornado()">Login</button>
+                        <label>
+                        </label>
+                    </div>
+
+
+
+
+
+
+
+                    <p id="demo"></p>
+
+                    <script>
+                        function myTornado() {
+                            var uname = document.getElementById('uname').value;
+                            var psw = document.getElementById('psw').value;
+                            var url = "/login";
+                            var unameb64 = btoa(uname);
+                            var pswb64 = btoa(psw);
+                            var params = { "myUser": unameb64, "myPass": pswb64 };
+                            var tosend = JSON.stringify(params);
+                            var xhr = new XMLHttpRequest();
+                            xhr.open("POST", url);
+                            xhr.send(tosend);
+                            setTimeout(myloc, 2000)
+                        }
+                        function myloc() {
+                            window.location.assign("/root")
+                        }
+                        func          </script>
 
 
 
@@ -283,14 +290,17 @@ func          </script>
 
 
 
-        </section>
-
-        <footer>
 
 
-        </footer>
-    </article>
-</main>
+
+            </section>
+
+            <footer>
+
+
+            </footer>
+        </article>
+    </main>
 </body>
 
 </html>

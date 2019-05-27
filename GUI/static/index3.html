@@ -4,251 +4,252 @@
 
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SmartHOME by ClfBV</title>
-  <meta name="author" content="ClFbV" />
-  <meta name="description" content="SmartHOME" />
-  <meta name="keywords" content="" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SmartHome by Veebor</title>
+    <meta name="author" content="Veebor" />
+    <meta name="description" content="SmartHome" />
+    <meta name="keywords" content="" />
 
-  <link rel="stylesheet" href="{{ static_url("style.css") }}">
-  <link rel="stylesheet" href="{{ static_url("left-nav-style.css") }}">
+    <link rel="stylesheet" href="{{ static_url("style.css") }}">
+    <link rel="stylesheet" href="{{ static_url("left-nav-style.css") }}">
 
 </head>
 
 <body>
 
-<input type="checkbox" id="nav-toggle" hidden>
+    <input type="checkbox" id="nav-toggle" hidden>
 
-<nav class="nav">
-
-
-  <label for="nav-toggle" class="nav-toggle" onclick></label>
-
-  <h2 class="logo">
-    <a href="http://moxnet.tk">ClFbV.cf</a>
-  </h2>
-  <ul>
-      <li><a href="/root">Home</a></li>
-      <li><a href="/lights">Lights</a></li>
-      <li><a href="/aircon">Airconditioning</a></li>
-      <li><a href="/tvcon">TV-Controller</a></li>
-        <li><a href="/sensors">Sensors</a></li>
-        <li><a href="/facil">Facilities</a></li>
-        <li><a href="/sec">Security</a></li>
-    </ul>
-</nav>
+    <nav class="nav">
 
 
-<p STYLE="text-align: center " >
-    <font size="6">Air-Conditioner</font>
-</p>
-<p STYLE="text-align: center">
+        <label for="nav-toggle" class="nav-toggle" onclick></label>
+
+        <h2 class="logo">
+            <a href="https://veebor.tk">Veebor</a>
+        </h2>
+        <ul>
+            <li><a href="/root">Home</a></li>
+            <li><a href="/lights">Lights</a></li>
+            <li><a href="/aircon">Airconditioning</a></li>
+            <li><a href="/tvcon">TV-Controller</a></li>
+            <li><a href="/sensors">Sensors</a></li>
+            <li><a href="/facil">Facilities</a></li>
+            <li><a href="/sec">Security</a></li>
+        </ul>
+    </nav>
+
+
+    <p STYLE="text-align: center ">
+        <font size="6">Air-Conditioner</font>
+    </p>
+    <p STYLE="text-align: center">
 
 
 
-    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-    <label class="btcheck" style="background-image: url('/static/control_on_off.png')" for="myonoffswitch" onclick="unction()"></label>
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+        <label class="btcheck" style="background-image: url('/static/control_on_off.png')" for="myonoffswitch"
+            onclick="unction()"></label>
 
-    <style>
-        .btcheck{
+        <style>
+            .btcheck {
 
-            width: 100px;
-            height: 100px;
-            background: #1abc9c no-repeat center center;
-            background-size: cover;
-            bottom: 150px;
-        }
-
-
-    </style>
-
-    <script>
-        function unction() {
-            var checBox = document.getElementById("myonoffswitch");
-            var text = document.getElementById("text");
-            if (checBox.checked == true){
-                alert("Condizionatore Acceso");
-            } else {
-                alert("Condizionatore Spento");
-                cheBox.checked == true;
+                width: 100px;
+                height: 100px;
+                background: #1abc9c no-repeat center center;
+                background-size: cover;
+                bottom: 150px;
             }
-        }
-    </script>
+        </style>
 
-    <style>
-        .bti{
+        <script>
+            function unction() {
+                var checBox = document.getElementById("myonoffswitch");
+                var text = document.getElementById("text");
+                if (checBox.checked == true) {
+                    alert("Condizionatore Acceso");
+                } else {
+                    alert("Condizionatore Spento");
+                    cheBox.checked == true;
+                }
+            }
+        </script>
 
-            width: 200px;
-            height: 200px;
-            background-color: #1abc9c;
-            background-repeat: no-repeat;
-            background-image: url("/static/control_on_off.png");
-            background-position: center center;
-            background-size: cover;
-            bottom: 150px;
-        }
+        <style>
+            .bti {
+
+                width: 200px;
+                height: 200px;
+                background-color: #1abc9c;
+                background-repeat: no-repeat;
+                background-image: url("/static/control_on_off.png");
+                background-position: center center;
+                background-size: cover;
+                bottom: 150px;
+            }
+        </style>
+
+    </p>
 
 
+    <p STYLE="text-align: center">
+        <style>
+            .slidecontainer {
+                width: 100%;
+                position: center;
+            }
 
+            .slideri {
+                -webkit-appearance: none;
+                width: 20%;
+                height: 15px;
+                border-radius: 5px;
+                background: #d3d3d3;
+                outline: none;
+                opacity: 0.7;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+                position: center;
+            }
 
+            .slideri:hover {
+                opacity: 1;
+            }
 
-    </style>
+            .slideri::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background: #4CAF50;
+                cursor: pointer;
+            }
 
-</p>
+            .slideri::-moz-range-thumb {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background: #4CAF50;
+                cursor: pointer;
+            }
+        </style>
+    </p>
+    <p style="text-align: center">Set your Temperature</p>
 
-
-<p STYLE="text-align: center">
-    <style>
-        .slidecontainer {
-            width: 100%;
-            position: center;
-        }
-
-        .slideri {
-            -webkit-appearance: none;
-            width: 20%;
-            height: 15px;
-            border-radius: 5px;
-            background: #d3d3d3;
-            outline: none;
-            opacity: 0.7;
-            -webkit-transition: .2s;
-            transition: opacity .2s;
-            position: center;
-        }
-
-        .slideri:hover {
-            opacity: 1;
-        }
-
-        .slideri::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background: #4CAF50;
-            cursor: pointer;
-        }
-
-        .slideri::-moz-range-thumb {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background: #4CAF50;
-            cursor: pointer;
-        }
-    </style>
-</p>
-<p style="text-align: center">Set your Temperature</p>
-
-<div style="text-align: center">
+    <div style="text-align: center">
 
         <input type="range" min="18" max="28" value="22" class="slideri" id="myRange">
 
-        <button class="btj" style="background-color:  #1abc9c" onclick="alert('Temperatura Impostata')"><span id="demo" style="width: 200px"></span></button>
-</div>
+        <button class="btj" style="background-color:  #1abc9c" onclick="alert('Temperatura Impostata')"><span id="demo"
+                style="width: 200px"></span></button>
+    </div>
     <li style="text-align: center">
-    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_control.png')" ></button>
-    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_level_3.png')" ></button>
-    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_air_filter.png')" ></button>
+        <button onclick="on()" class="btcheck"
+            style="background-image:url('/static/vent_ventilation_control.png')"></button>
+        <button onclick="on()" class="btcheck"
+            style="background-image:url('/static/vent_ventilation_level_3.png')"></button>
+        <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_air_filter.png')"></button>
     </li>
 
 
-<style>
-    #overlay {
-        position: fixed;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.8);
-        z-index: 2;
-        cursor: pointer;
-    }
-</style>
+    <style>
+        #overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2;
+            cursor: pointer;
+        }
+    </style>
 
 
-            <div id="overlay" >
+    <div id="overlay">
 
-
-            <script>
-                var slider = document.getElementById("myRange");
-                var output = document.getElementById("demo");
-                output.innerHTML = slider.value;
-
-                slider.oninput = function() {
-                    output.innerHTML = this.value;
-                }
-            </script>
-
-
-                <li style="text-align: center">
-                    <button onclick="off()" class="btcheck" style="background-image:url('/static/fts_blade_arc_50.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('/static/fts_blade_z_70.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_level_3.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_air_filter.png')" ></button>
-                </li>
-
-                <li style="text-align: center">
-                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_control.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_control.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_ventilation_level_3.png')" ></button>
-                    <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_air_filter.png')" ></button>
-                </li>
-
-                <p style="text-align: center">
-                    <input class="btcheck"type="button" onclick="alert('Accensione impostata')">
-                    <input class="btcheck"  type="time" name="usr_time">
-                </p>
-                <p style="text-align: center">
-                    <input class="btcheck"type="button" onclick="alert('Spegnimento impostata')">
-                    <input class="btcheck"  type="time" name="usr_time">
-                </p>
-
-
-
-
-
-
-
-                <style>
-                .btu{
-
-                    width: 200px;
-                    height: 200px;
-                    background: #1abc9c no-repeat center center;
-                    background-image: url("/static/control_arrow_downward.png");
-                    background-size: cover;
-                    bottom: 150px;
-                }
-
-
-            </style>
-
-            </div>
-
-        <div style="text-align: center ; padding:20px">
-
-            <button onclick="on()" class="btcheck" style="background-image:url('/static/steuer_plus.png')" ></button>
-        </div>
 
         <script>
-            function on() {
-                document.getElementById("overlay").style.display = "block";
-            }
+            var slider = document.getElementById("myRange");
+            var output = document.getElementById("demo");
+            output.innerHTML = slider.value;
 
-            function off() {
-                document.getElementById("overlay").style.display = "none";
+            slider.oninput = function () {
+                output.innerHTML = this.value;
             }
         </script>
 
 
+        <li style="text-align: center">
+            <button onclick="off()" class="btcheck"
+                style="background-image:url('/static/fts_blade_arc_50.png')"></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/fts_blade_z_70.png')"></button>
+            <button onclick="on()" class="btcheck"
+                style="background-image:url('/static/vent_ventilation_level_3.png')"></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_air_filter.png')"></button>
+        </li>
+
+        <li style="text-align: center">
+            <button onclick="on()" class="btcheck"
+                style="background-image:url('/static/vent_ventilation_control.png')"></button>
+            <button onclick="on()" class="btcheck"
+                style="background-image:url('/static/vent_ventilation_control.png')"></button>
+            <button onclick="on()" class="btcheck"
+                style="background-image:url('/static/vent_ventilation_level_3.png')"></button>
+            <button onclick="on()" class="btcheck" style="background-image:url('/static/vent_air_filter.png')"></button>
+        </li>
+
+        <p style="text-align: center">
+            <input class="btcheck" type="button" onclick="alert('Accensione impostata')">
+            <input class="btcheck" type="time" name="usr_time">
+        </p>
+        <p style="text-align: center">
+            <input class="btcheck" type="button" onclick="alert('Spegnimento impostata')">
+            <input class="btcheck" type="time" name="usr_time">
+        </p>
+
+
+
+
+
+
+
+        <style>
+            .btu {
+
+                width: 200px;
+                height: 200px;
+                background: #1abc9c no-repeat center center;
+                background-image: url("/static/control_arrow_downward.png");
+                background-size: cover;
+                bottom: 150px;
+            }
+        </style>
+
+    </div>
+
+    <div style="text-align: center ; padding:20px">
+
+        <button onclick="on()" class="btcheck" style="background-image:url('/static/steuer_plus.png')"></button>
+    </div>
+
+    <script>
+        function on() {
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function off() {
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+
+
 
 </body>
+
 </html>
