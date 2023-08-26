@@ -10,13 +10,3 @@
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 **The NEW home-automation project.** 
-
-## DEMO
-
-Demo available at [SmartHome DEMO](https://smarthome.veebor.tk)
-
-
-Username: `demo`
-
-
-Password: `demo`
